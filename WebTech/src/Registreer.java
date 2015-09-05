@@ -7,17 +7,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class HelloWorld
+ * Servlet implementation class Registreer
  */
-@WebServlet("/HelloWorld")
-public class HelloWorld extends HttpServlet {
+@WebServlet("/Registreer")
+public class Registreer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public HelloWorld() {
+	public Registreer() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -25,6 +26,8 @@ public class HelloWorld extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -34,7 +37,7 @@ public class HelloWorld extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
-		System.out.println(name + " " + password);
+		doGet(request, response);
 	}
 
 }
