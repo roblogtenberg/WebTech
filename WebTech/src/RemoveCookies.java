@@ -1,7 +1,5 @@
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -10,17 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Registreer
+ * Servlet implementation class RemoveCookies
  */
-@WebServlet("/Registreer")
-public class Registreer extends HttpServlet {
-
+@WebServlet("/RemoveCookies")
+public class RemoveCookies extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Registreer() {
+	public RemoveCookies() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -39,32 +36,15 @@ public class Registreer extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("name");
-		String password = request.getParameter("password");
-
 		Cookie[] cookies = request.getCookies();
 
 		if (cookies == null) {
-			makeAccountCookie(name, password, response);
 			return;
 		} else {
 			for (Cookie cookie : cookies) {
-				System.out.println("komt die hier?");
-				if (name.equals(cookie.getValue())) {
-					System.out.println("Naam bestaat al");
-					response.getWriter().println("Naam bestaat al");
-				}
+				cookie.setMaxAge(0);
+				response.addCookie(cookie);
 			}
-			makeAccountCookie(name, password, response);
 		}
-	}
-
-	public void makeAccountCookie(String name, String password, HttpServletResponse response) throws IOException {
-		Cookie cookieName = new Cookie("name", name);
-		Cookie cookiePassword = new Cookie("password", password);
-		response.addCookie(cookieName);
-		response.addCookie(cookiePassword);
-		response.getWriter().println("Account is aangemaakt");
-		System.out.println("Account is aangemaakt met naam: " + name + " en password: " + password);
 	}
 }

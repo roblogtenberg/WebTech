@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/HelloWorld")
 public class HelloWorld extends HttpServlet {
 
-	private Cookie cookie;
-
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -36,21 +34,24 @@ public class HelloWorld extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 
 		Cookie[] cookies = request.getCookies();
 
 		if (cookies == null) {
+			System.out.println("Er zijn geen koekjes");
 			return;
 		} else {
 			for (Cookie cookie : cookies) {
 				if (password.equals(cookie.getValue())) {
 					System.out.println("Ingelogd");
+					response.getWriter().println("Ingelogd");
 				} else {
-					System.out.println("Wachtwoord is onjuist");
+					response.getWriter().println("Naam of wachtwoord is onjuist");
+					System.out.println("Naam of wachtwoord is onjuist");
 				}
 			}
 		}
 	}
-
 }
