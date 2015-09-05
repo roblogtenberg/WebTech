@@ -2,6 +2,7 @@
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/HelloWorld")
 public class HelloWorld extends HttpServlet {
+
+	private Cookie cookie;
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -32,9 +36,21 @@ public class HelloWorld extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("name");
 		String password = request.getParameter("password");
-		System.out.println(name + " " + password);
+
+		Cookie[] cookies = request.getCookies();
+
+		if (cookies == null) {
+			return;
+		} else {
+			for (Cookie cookie : cookies) {
+				if (password.equals(cookie.getValue())) {
+					System.out.println("Ingelogd");
+				} else {
+					System.out.println("Wachtwoord is onjuist");
+				}
+			}
+		}
 	}
 
 }
