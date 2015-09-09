@@ -4,10 +4,14 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import nl.ein2vc.webtech.model.Leaser;
+import nl.ein2vc.webtech.model.Model;
+import nl.ein2vc.webtech.model.Renter;
+import nl.ein2vc.webtech.model.User;
 
 /**
  * Servlet implementation class Registreer
@@ -41,28 +45,24 @@ public class Register extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
+		String[] userType = request.getParameterValues("checkbox");
 
-		if (cookies == null) {
-			makeAccountCookie(name, password, response);
-			return;
-		} else {
-			for (Cookie cookie : cookies) {
-				System.out.println("komt die hier?");
-				if (name.equals(cookie.getValue())) {
-					System.out.println("Naam bestaat al");
-					response.getWriter().println("Naam bestaat al");
-				}
-			}
-			makeAccountCookie(name, password, response);
+		Model model = (Model) getServletContext().getAttribute("myModel");
+
+		if (userType.length >= 2) {
+			System.out.println("Er zijn twee boxen aangetikt maak hier nog een mooie implementatie voor");
 		}
-	}
 
-	public void makeAccountCookie(String name, String password, HttpServletResponse response) throws IOException {
-		Cookie cookieName = new Cookie("name", name);
-		Cookie cookiePassword = new Cookie("password", password);
-		response.addCookie(cookieName);
-		response.addCookie(cookiePassword);
-		response.getWriter().println("Account is aangemaakt");
-		System.out.println("Account is aangemaakt met naam: " + name + " en password: " + password);
+		if (!model.isUser(name)) {
+			if (userType[0].equals("Renter")) {
+				User user = new Renter(name, password);
+				model.addUser(user);
+			} else {
+				User user = new Leaser(name, password);
+				model.addUser(user);
+			}
+		} else {
+			System.out.println("De gebruiker bestaat al");
+		}
 	}
 }
