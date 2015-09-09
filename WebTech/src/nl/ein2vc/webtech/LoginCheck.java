@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import nl.ein2vc.webtech.model.Model;
+
 /**
  * Servlet implementation class HelloWorld
  */
@@ -38,21 +40,18 @@ public class LoginCheck extends HttpServlet {
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 
-		Cookie[] cookies = request.getCookies();
+		Model model = (Model) getServletContext().getAttribute("myModel");
 
-		if (cookies == null) {
-			System.out.println("Er zijn geen koekjes");
-			return;
-		} else {
-			for (Cookie cookie : cookies) {
-				if (password.equals(cookie.getValue())) {
-					System.out.println("Ingelogd");
-					response.getWriter().println("Ingelogd");
-				} else {
-					response.getWriter().println("Naam of wachtwoord is onjuist");
-					System.out.println("Naam of wachtwoord is onjuist");
-				}
+		if (model.isUser(name)) {
+			if (password.equals(model.getUser(name).getPassword())) {
+				System.out.println("Logged in succesfully");
+			} else {
+				System.out.println("Wrong password");
 			}
+
+		} else {
+			System.out.println("Wrong username or password");
 		}
+
 	}
 }
