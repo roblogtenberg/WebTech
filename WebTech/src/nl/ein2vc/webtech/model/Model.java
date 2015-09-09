@@ -1,7 +1,7 @@
 package nl.ein2vc.webtech.model;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Model {
 
@@ -12,10 +12,24 @@ public class Model {
 	}
 	
 	public List<Room> getRooms() {
+		List<Room> rooms = new ArrayList<>();
+		
 		for(User user : users) {
 			if(user instanceof Leaser) {
-				
+				rooms.addAll(((Leaser) user).getRooms());
 			}
 		}
+		
+		return rooms;
+	}
+	
+	public User getUser(String name) {
+		for(User user : users) {
+			if(name.equals(user.getName())) {
+				return user;
+			}
+		}
+		
+		return null;
 	}
 }

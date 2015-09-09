@@ -42,8 +42,6 @@ public class Register extends HttpServlet {
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 
-		Cookie[] cookies = request.getCookies();
-
 		if (cookies == null) {
 			makeAccountCookie(name, password, response);
 			return;
