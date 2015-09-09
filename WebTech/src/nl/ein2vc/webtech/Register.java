@@ -61,6 +61,8 @@ public class Register extends HttpServlet {
 				User user = new Leaser(name, password);
 				model.addUser(user);
 			}
+			
+			response.sendRedirect("login.html");
 		} else {
 			System.out.println("De gebruiker bestaat al");
 		}
