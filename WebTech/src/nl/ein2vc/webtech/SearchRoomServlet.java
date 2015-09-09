@@ -1,3 +1,4 @@
+package nl.ein2vc.webtech;
 
 
 import java.io.IOException;
@@ -8,16 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ShowPersonsServlet
+ * Servlet implementation class SearchRoomServlet
  */
-@WebServlet("/ShowPersonsServlet")
-public class ShowPersonsServlet extends HttpServlet {
+@WebServlet("/SearchRoomServlet")
+public class SearchRoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowPersonsServlet() {
+    public SearchRoomServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
