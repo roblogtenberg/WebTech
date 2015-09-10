@@ -22,6 +22,10 @@ public class Model {
 		return rooms;
 	}
 
+	public List<User> getUsers() {
+		return users;
+	}
+	
 	public User getUser(String name) {
 		for (User user : users) {
 			if (name.equals(user.getName())) {

@@ -42,9 +42,15 @@ public class ShowRoomsServlet extends HttpServlet {
 			System.out.println("room shown");
 		}
 		
-		out.println("<form method=\"POST\" action=\"ShowRooms\">"
-				+	 "<input type=\"submit\""
-				+   "</form>");
+		out.println("<!DOCTYPE html"
+				+ "<html>"
+				+ "<head><title>Rooms</title></head>"
+				+ "<body>"
+				+ "<form method=\"POST\" action=\"ShowRooms\">"
+				+	 "<input type=\"submit\" >"
+				+   "</form>"
+				+ "</body>"
+				+ "</html>");
 	}
 
 	/**
