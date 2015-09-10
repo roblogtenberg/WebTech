@@ -23,4 +23,9 @@ public class Room {
 	public String getPlace() {
 		return place;
 	}
+
+	@Override
+	public String toString() {
+		return "Room [squareMeters=" + squareMeters + ", price=" + price + ", place=" + place + "]";
+	}
 }
