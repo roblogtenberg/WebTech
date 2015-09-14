@@ -44,30 +44,6 @@ public class ShowPersonsServlet extends HttpServlet {
 
 		Cookie[] cookies = request.getCookies();
 
-		boolean found = false;
-		for (Cookie cookie : cookies) {
-			if (cookie.getName().equals("timesVisited")) {
-				found = true;
-				int visited = Integer.valueOf(cookie.getValue());
-				out.println("De pagina is " + visited + " keer bezocht. <br />");
-				visited++;
-				cookie.setValue(String.valueOf(visited));
-				response.addCookie(cookie);
-			} else if(cookie.getName().equals("lastVisited")) {
-				out.println("De pagina is het laatst bezocht op: " + cookie.getValue() + "<br />");
-				cookie.setValue(dateFormat.format(new Date()));
-				response.addCookie(cookie);
-			}
-		}
-		
-		if (!found) {
-			Cookie timesCookie = new Cookie("timesVisited", "1");
-			out.println("Dit is de eerste keer dat deze pagina bezocht wordt");
-			response.addCookie(timesCookie);
-			Cookie lastCookie = new Cookie("lastVisited", dateFormat.format(new Date()));
-			response.addCookie(lastCookie);
-		}
-
 		if (user == null) {
 			out.println("U bent niet ingelogd.");
 		} else {
@@ -76,6 +52,30 @@ public class ShowPersonsServlet extends HttpServlet {
 
 			for (User u : users) {
 				out.println(u);
+			}
+
+			boolean found = false;
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("timesVisited")) {
+					found = true;
+					int visited = Integer.valueOf(cookie.getValue());
+					out.println("De pagina is " + visited + " keer bezocht. <br />");
+					visited++;
+					cookie.setValue(String.valueOf(visited));
+					response.addCookie(cookie);
+				} else if (cookie.getName().equals("lastVisited")) {
+					out.println("De pagina is het laatst bezocht op: " + cookie.getValue() + "<br />");
+					cookie.setValue(dateFormat.format(new Date()));
+					response.addCookie(cookie);
+				}
+			}
+
+			if (!found) {
+				Cookie timesCookie = new Cookie("timesVisited", "1");
+				out.println("Dit is de eerste keer dat deze pagina bezocht wordt");
+				response.addCookie(timesCookie);
+				Cookie lastCookie = new Cookie("lastVisited", dateFormat.format(new Date()));
+				response.addCookie(lastCookie);
 			}
 		}
 		out.println("</body>" + "</html>");

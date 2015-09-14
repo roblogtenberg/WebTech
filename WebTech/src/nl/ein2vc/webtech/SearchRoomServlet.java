@@ -33,27 +33,39 @@ public class SearchRoomServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int squareMeters = Integer.valueOf(request.getParameter("squaremeters"));
-		double price = Double.valueOf(request.getParameter("maxprice"));
+		String squareMetersString = request.getParameter("squaremeters");
+		String priceString = request.getParameter("price");
 		String place = request.getParameter("place");
 		PrintWriter out = response.getWriter();
-		
-		out.println("<!DOCTYPE html>"
-				+ "<html>"
-				+ "<head><title>Rooms</title></head>"
-				+ "<body>");
-		
-		Model model = (Model) getServletContext().getAttribute("myModel");
-		List<Room> rooms = model.getRooms();
 
-		for (Room room : rooms) {
-			if(squareMeters >= room.getSquareMeters() && price >= room.getPrice() && place.toLowerCase().contains(room.getPlace().toLowerCase())) {
-				out.println(room);
+		if (squareMetersString.length() < 1 || priceString.length() < 1 || place.length() < 1) {
+			out.println("<!DOCTYPE html>" 
+					+ "<html>" 
+					+ "<head><title>Request error</title></head>" 
+					+ "<body>Er was een invoer fout!</body>" 
+					+ "</html>");
+		} else {
+			int squareMeters = Integer.valueOf(request.getParameter("squaremeters"));
+			double price = Double.valueOf(request.getParameter("maxprice"));
+
+			out.println("<!DOCTYPE html>" 
+					+ "<html>" 
+					+ "<head><title>Rooms</title></head>" 
+					+ "<body>");
+
+			Model model = (Model) getServletContext().getAttribute("myModel");
+			List<Room> rooms = model.getRooms();
+
+			for (Room room : rooms) {
+				if (squareMeters >= room.getSquareMeters() && price >= room.getPrice() && place.toLowerCase().contains(room.getPlace().toLowerCase())) {
+					out.println(room);
+				}
 			}
+
+			out.println("</body>" 
+					+ "</html>");
+
 		}
-		
-		out.println("</body>"
-				+ "</html>");
 	}
 
 	/**

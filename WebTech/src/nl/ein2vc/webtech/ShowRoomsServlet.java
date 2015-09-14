@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import nl.ein2vc.webtech.model.Leaser;
 import nl.ein2vc.webtech.model.Room;
+import nl.ein2vc.webtech.model.User;
 
 /**
  * Servlet implementation class ShowRoomsServlet
@@ -34,23 +35,33 @@ public class ShowRoomsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Leaser leaser = (Leaser) request.getSession().getAttribute("userLoggedIn");
-		List<Room> rooms = leaser.getRooms();
+		User user = (User) request.getSession().getAttribute("userLoggedIn");
 		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE html"
-				+ "<html>"
-				+ "<head><title>Rooms</title></head>"
-				+ "<body>");
 		
-		for(Room r : rooms) {
-			out.println(r.getPlace() + " " + r.getPrice() + " " + r.getSquareMeters());
+		if(user == null) {
+			printLoginError(out);
+		} else {
+			if(user instanceof Leaser) {
+				Leaser leaser = (Leaser) user;
+				List<Room> rooms = leaser.getRooms();
+				out.println("<!DOCTYPE html"
+						+ "<html>"
+						+ "<head><title>Rooms</title></head>"
+						+ "<body>");
+				
+				for(Room room : rooms) {
+					out.println(room);
+				}
+				
+				out.println("<form method=\"POST\" action=\"ShowRooms\">"
+						+	 "<input type=\"submit\" value=\"Kamer toevoegen\" >"
+						+   "</form>"
+						+ "</body>"
+						+ "</html>");
+			} else {
+				printLoginError(out);
+			}
 		}
-		
-		out.println("<form method=\"POST\" action=\"ShowRooms\">"
-				+	 "<input type=\"submit\" value=\"Kamer toevoegen\" >"
-				+   "</form>"
-				+ "</body>"
-				+ "</html>");
 	}
 
 	/**
@@ -61,4 +72,11 @@ public class ShowRoomsServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
+	private void printLoginError(PrintWriter out) {
+		out.println("<!DOCTYPE html>"
+				+ "<html>"
+				+ "<head><title>Login error</title><head>"
+				+ "<body>U bent niet ingelogd!</body>"
+				+ "</html>");
+	}
 }

@@ -50,6 +50,7 @@ public class LoginCheck extends HttpServlet {
 			User user = model.getUser(name);
 			if (password.equals(user.getPassword())) {
 				HttpSession session = request.getSession();
+				session.removeAttribute("userLoggedIn");
 				session.setAttribute("userLoggedIn", user);
 				System.out.println("Logged in succesfully");
 				if(user instanceof Renter) {
