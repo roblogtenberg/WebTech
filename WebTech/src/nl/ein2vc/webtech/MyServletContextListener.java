@@ -24,7 +24,6 @@ public class MyServletContextListener implements ServletContextListener {
 	 * @see ServletContextListener#contextInitialized(ServletContextEvent)
 	 */
 	public void contextInitialized(ServletContextEvent arg0) {
-
 		arg0.getServletContext().setAttribute("myModel", new Model());
 	}
 

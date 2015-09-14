@@ -50,7 +50,9 @@ public class Register extends HttpServlet {
 		Model model = (Model) getServletContext().getAttribute("myModel");
 
 		if (userType.length >= 2) {
-			System.out.println("Er zijn twee boxen aangetikt maak hier nog een mooie implementatie voor");
+			System.out.println("There are too many types selected!");
+		} else if(userType.length <= 0) {
+			System.out.println("There is no type selected!");
 		}
 
 		if (!model.isUser(name)) {

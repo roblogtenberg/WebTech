@@ -38,6 +38,11 @@ public class SearchRoomServlet extends HttpServlet {
 		String place = request.getParameter("place");
 		PrintWriter out = response.getWriter();
 		
+		out.println("<!DOCTYPE html>"
+				+ "<html>"
+				+ "<head><title>Rooms</title></head>"
+				+ "<body>");
+		
 		Model model = (Model) getServletContext().getAttribute("myModel");
 		List<Room> rooms = model.getRooms();
 
@@ -46,6 +51,9 @@ public class SearchRoomServlet extends HttpServlet {
 				out.println(room);
 			}
 		}
+		
+		out.println("</body>"
+				+ "</html>");
 	}
 
 	/**
