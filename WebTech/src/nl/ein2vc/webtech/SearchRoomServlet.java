@@ -47,7 +47,7 @@ public class SearchRoomServlet extends HttpServlet {
 		List<Room> rooms = model.getRooms();
 
 		for (Room room : rooms) {
-			if(squareMeters >= room.getSquareMeters() && price <= room.getPrice() && place.toLowerCase().contains(room.getPlace().toLowerCase())) {
+			if(squareMeters >= room.getSquareMeters() && price >= room.getPrice() && place.toLowerCase().contains(room.getPlace().toLowerCase())) {
 				out.println(room);
 			}
 		}

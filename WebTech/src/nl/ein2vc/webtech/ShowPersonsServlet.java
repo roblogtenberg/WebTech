@@ -2,6 +2,9 @@ package nl.ein2vc.webtech;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -36,7 +39,7 @@ public class ShowPersonsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = (User) request.getSession().getAttribute("userLoggedIn");
 		PrintWriter out = response.getWriter();
-
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		out.println("<!DOCTYPE html>" + "<html>" + "<head><title>Persons</title></head>" + "<body>");
 
 		Cookie[] cookies = request.getCookies();
@@ -46,17 +49,23 @@ public class ShowPersonsServlet extends HttpServlet {
 			if (cookie.getName().equals("timesVisited")) {
 				found = true;
 				int visited = Integer.valueOf(cookie.getValue());
-				out.println("De pagina is " + visited + " keer bezocht.");
+				out.println("De pagina is " + visited + " keer bezocht. <br />");
 				visited++;
 				cookie.setValue(String.valueOf(visited));
 				response.addCookie(cookie);
+			} else if(cookie.getName().equals("lastVisited")) {
+				out.println("De pagina is het laatst bezocht op: " + cookie.getValue() + "<br />");
+				cookie.setValue(dateFormat.format(new Date()));
+				response.addCookie(cookie);
 			}
 		}
-
+		
 		if (!found) {
-			Cookie cookie = new Cookie("timesVisited", "1");
+			Cookie timesCookie = new Cookie("timesVisited", "1");
 			out.println("Dit is de eerste keer dat deze pagina bezocht wordt");
-			response.addCookie(cookie);
+			response.addCookie(timesCookie);
+			Cookie lastCookie = new Cookie("lastVisited", dateFormat.format(new Date()));
+			response.addCookie(lastCookie);
 		}
 
 		if (user == null) {

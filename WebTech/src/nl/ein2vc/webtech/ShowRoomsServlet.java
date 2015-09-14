@@ -37,17 +37,17 @@ public class ShowRoomsServlet extends HttpServlet {
 		Leaser leaser = (Leaser) request.getSession().getAttribute("userLoggedIn");
 		List<Room> rooms = leaser.getRooms();
 		PrintWriter out = response.getWriter();
-		for(Room r : rooms) {
-			out.println(r.getPlace() + " " + r.getPrice() + " " + r.getSquareMeters());
-			System.out.println("room shown");
-		}
-		
 		out.println("<!DOCTYPE html"
 				+ "<html>"
 				+ "<head><title>Rooms</title></head>"
-				+ "<body>"
-				+ "<form method=\"POST\" action=\"ShowRooms\">"
-				+	 "<input type=\"submit\" name=\"Kamer toevoegen\" >"
+				+ "<body>");
+		
+		for(Room r : rooms) {
+			out.println(r.getPlace() + " " + r.getPrice() + " " + r.getSquareMeters());
+		}
+		
+		out.println("<form method=\"POST\" action=\"ShowRooms\">"
+				+	 "<input type=\"submit\" value=\"Kamer toevoegen\" >"
 				+   "</form>"
 				+ "</body>"
 				+ "</html>");
