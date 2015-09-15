@@ -1,6 +1,7 @@
 package nl.ein2vc.webtech;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,28 +46,28 @@ public class Register extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
-		String[] userType = request.getParameterValues("checkbox");
-
+		String userType = request.getParameter("radioButton");
+		PrintWriter out = response.getWriter();
 		Model model = (Model) getServletContext().getAttribute("myModel");
 
-		if (userType.length >= 2) {
-			System.out.println("There are too many types selected!");
-		} else if(userType.length <= 0) {
-			System.out.println("There is no type selected!");
-		}
-
-		if (!model.isUser(name)) {
-			if (userType[0].equals("Renter")) {
-				User user = new Renter(name, password);
-				model.addUser(user);
-			} else {
-				User user = new Leaser(name, password);
-				model.addUser(user);
-			}
-			
-			response.sendRedirect("login.html");
+		if (name.length() < 1 || password.length() < 1) {
+			out.println("Foute invoer");
 		} else {
-			System.out.println("De gebruiker bestaat al");
+			if (!model.isUser(name)) {
+				if (userType.equals("Renter")) {
+					User user = new Renter(name, password);
+					model.addUser(user);
+				} else {
+					User user = new Leaser(name, password);
+					model.addUser(user);
+				}
+
+				response.sendRedirect("login.html");
+			} else {
+				System.out.println("De gebruiker bestaat al");
+				out.println("De gebruikersnaam bestaat al");
+			}
+
 		}
 	}
 }
