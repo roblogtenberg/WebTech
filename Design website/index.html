@@ -3,16 +3,23 @@
 <head>
 	<title>Thost.nl</title>
 	<link rel="stylesheet" type="text/css" href="style.css"> 
+  <script type="text/javascript" src="dropdown.js"></script>
 </head>
 <body>
   <img class="banner" src="res/banner.png">
   <header>
-    <div class="menu">
-      <a class="button" href="index.html">Home</a>
-      <a class="button" href="about.html">Over ons</a>
-      <a class="button" href="contracts.html">Abonnementen</a>
-      <a class="button" href="contact.html">Contact</a>
-    </div>
+  <nav>
+    <ul id="dropdown">
+      <li><a href="#" onmouseover="mopen('m1')" onmouseout="mclosetime()">Menu</a>
+        <div id="m1" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+          <a href="index.html">Home</a>
+          <a href="about.html">Over ons</a>
+          <a href="`contracts.html">Abonnementen</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </li>
+    </ul>
+    </nav>
   </header>
   <section>
     section
