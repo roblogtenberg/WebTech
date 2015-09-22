@@ -1,8 +1,10 @@
-// Copyright 2006-2007 javascript-array.com
-
 var timeout	= 500;
 var closetimer	= 0;
 var ddmenuitem	= 0;
+
+// close layer when click-out
+// this causes the menu to never open!! fix this shit!
+document.onclick = mclose;
 
 // open hidden layer
 function mopen(id)
@@ -39,6 +41,3 @@ function mcancelclosetime()
 		closetimer = null;
 	}
 }
-
-// close layer when click-out
-document.onclick = mclose;

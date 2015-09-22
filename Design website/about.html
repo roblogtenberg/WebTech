@@ -5,13 +5,20 @@
   <link rel="stylesheet" type="text/css" href="style.css"> 
 </head>
 <body>
+<img class="banner" src="res/banner.png">
   <header>
-   <div class="menu">
-    <a class="button" href="index.html">Home</a>
-    <a class="button" href="about.html">Over ons</a>
-    <a class="button" href="contracts.html">Abonnementen</a>
-    <a class="button" href="contact.html">Contact</a>
-  </div>
+   <nav>
+    <ul id="dropdown">
+      <li><a id="menuText" onclick="mopen('m1')">Menu</a>
+        <div id="m1">
+          <a class="button" href="index.html">Home</a>
+          <a class="button" href="about.html">Over ons</a>
+          <a class="button" href="contracts.html">Abonnementen</a>
+          <a class="button" href="contact.html">Contact</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
 </header>
 <section>
   section
