@@ -3,8 +3,8 @@ header {
 }
 
 section {
-	background-color: #0F0;
 	clear: both;
+	text-align: center;
 }
 
 footer {
@@ -131,11 +131,16 @@ nav {
 
 .contract {
 	display: inline-block;
+	margin: 20px;
 	background-size: 50px;
 	text-align: center;
-	border: 10px solid #7493DD;
+	border: 10px solid #0066CF;
 }
 
-section{
-	text-align: center;
+.oval {
+	width: 300px;
+	height: 500px;
+	-moz-border-radius: 50px / 50px;
+	-webkit-border-radius: 50px / 50px;
+	border-radius: 20px / 20px;
 }
