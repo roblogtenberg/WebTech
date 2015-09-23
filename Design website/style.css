@@ -3,7 +3,7 @@ header {
 }
 
 section {
-	background-color: #0F0;
+	text-align: center;
 	clear: both;
 }
 
@@ -62,10 +62,11 @@ nav {
 
 @media only screen and (max-device-width: 480px) {
 
-    body {
-    	width: 100%;
-    	font-size: 35px;
-    }
+	body {
+		width: 100%;
+		font-size: 35px;
+		margin: 0px;
+	}
 
 	#dropdown li {
 		margin: 0;
@@ -76,16 +77,16 @@ nav {
 
 	#dropdown li a {	
 		display: block;
-		margin: 0 1px 0 0;
-		padding: 4px 10px;
-		background: #5970B2;
+		margin: 0 0px 0 0;
+		padding: 0px 0px;
+		background: #00A3CC;
 		color: #FFF;
 		text-align: center;
 		text-decoration: none;
 	}
 
 	#dropdown li a:hover {	
-		background: #49A3FF;
+		background: #00667F;
 	}
 
 	#dropdown div {
@@ -94,20 +95,20 @@ nav {
 		margin: 0;
 		padding: 0;
 		background: #EAEBD8;
-		border: 1px solid #5970B2
+		border: 1px solid #5970B2;
+		width: 100%;
 	}
 
 	#dropdown div a {
 		position: relative;
 		display: block;
-		margin: 0;
-		padding: 5px 10px;
-		width: auto;
+		/*padding: 5px 10px;*/
+		width: 100%;
 		white-space: nowrap;
-		text-align: left;
+		text-align: center;
 		text-decoration: none;
-		background: #EAEBD8;
-		color: #2875DE;
+		background: #FFF;
+		color: #00A3CC;
 		font: 35px arial;
 	}
 
@@ -134,8 +135,4 @@ nav {
 	background-size: 50px;
 	text-align: center;
 	border: 10px solid #7493DD;
-}
-
-section{
-	text-align: center;
 }
