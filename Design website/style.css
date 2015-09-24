@@ -62,10 +62,10 @@ nav {
 
 @media only screen and (max-device-width: 480px) {
 
-    body {
-    	width: 100%;
-    	font-size: 35px;
-    }
+	body {
+		width: 100%;
+		font-size: 35px;
+	}
 
 	#dropdown li {
 		margin: 0;
@@ -135,12 +135,29 @@ nav {
 	background-size: 50px;
 	text-align: center;
 	border: 10px solid #0066CF;
+	background-color: #537DFF;
+}
+.specialContract{
+	display: inline-block;
+	margin: 20px;
+	background-size: 50px;
+	text-align: center;
+	border: 10px solid #0066CF;
+	background-color: #111ADB;
 }
 
-.oval {
-	width: 300px;
-	height: 500px;
-	-moz-border-radius: 50px / 50px;
-	-webkit-border-radius: 50px / 50px;
+.rectangle {
+	width: 310px;
+	height: 520px;
+	-moz-border-radius: 20px / 20px;
+	-webkit-border-radius: 20px / 20px;
 	border-radius: 20px / 20px;
+}
+
+.buyButton{
+	margin-height: 5px;
+	margin-top: 5px;
+	-moz-border-radius: 10px / 10px;
+	-webkit-border-radius: 10px / 10px;
+	border-radius: 10px / 10px;
 }
