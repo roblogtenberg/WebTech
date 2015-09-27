@@ -23,6 +23,14 @@ footer {
 	margin-left: auto;
 }
 
+.serverImage {
+	max-width: 100%;
+	max-height: 300px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
 nav {
 	text-align: center;
 }
@@ -38,7 +46,6 @@ nav {
 	#menuText {
 		display: none;
 	}
-
 	#m1 {
 		display: block;
 	}
@@ -63,9 +70,34 @@ nav {
 	.button:active {
 		top: 1px;
 	}
+
+	.rectangle {
+		width: 310px;
+		height: auto;
+		padding-bottom: 10px;
+		-moz-border-radius: 20px / 20px;
+		-webkit-border-radius: 20px / 20px;
+		border-radius: 20px / 20px;
+	}
+
+	.contract {
+		display: inline-block;
+		margin: 20px;
+		background-size: 50px;
+		border: 5px solid #0066CF;
+		background-color: #ECEFF1;
+	}
+
+	.specialContract{
+		display: inline-block;
+		margin: 20px;
+		background-size: 50px;
+		border: 5px solid #0066CF;
+		background-color: #B0BEC5;
+	}
 }
 
-@media only all and (max-width: 520px) {
+@media only all and (max-device-width: 520px) {
 
 	body {
 		max-width: 100%;
@@ -125,6 +157,43 @@ nav {
 		background: #49A3FF;
 		color: #FFF;
 	}
+
+	.contract {
+		margin-right: auto;
+		margin-left: auto;
+		display: block;
+		margin: 20px;
+		background-size: 50px;
+		border: 5px solid #0066CF;
+		background-color: ;
+	}
+
+	.specialContract {
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		margin: 20px;
+		background-size: 50px;
+		border: 5px solid #0066CF;
+		background-color:;
+	}
+
+	.rectangle {
+		margin-right: auto;
+		margin-left: auto;
+		display: block;
+		width: auto;
+		height: auto;
+		padding-bottom: 10px;
+		-moz-border-radius: 20px / 20px;
+		-webkit-border-radius: 20px / 20px;
+		border-radius: 20px / 20px;
+	}
+
+	.button {
+		font-size: 50px;
+	}
+
 }
 
 .copy-left {
@@ -140,41 +209,21 @@ nav {
 	z-index: -1;
 }
 
-.contract {
-	display: inline-block;
-	margin: 20px;
-	background-size: 50px;
-	text-align: center;
-	border: 10px solid #0066CF;
-	background-color: #537DFF;
-}
-.specialContract{
-	display: inline-block;
-	margin: 20px;
-	background-size: 50px;
-	text-align: center;
-	border: 10px solid #0066CF;
-	background-color: #111ADB;
-}
 
-.rectangle {
-	width: 310px;
-	height: 520px;
-	-moz-border-radius: 20px / 20px;
-	-webkit-border-radius: 20px / 20px;
-	border-radius: 20px / 20px;
-}
 
 .buyButton{
-	margin-height: 5px;
 	margin-top: 5px;
 	-moz-border-radius: 10px / 10px;
 	-webkit-border-radius: 10px / 10px;
 	border-radius: 10px / 10px;
 }
 
+.textColor{
+	color: #00667F;
+}
+
 #contact-form {
-	background-color:#F2F7F9;
+	background-color:;
 	width:465px;
 	padding:20px;
 	margin: 50px auto;    
