@@ -302,7 +302,6 @@ nav {
 	color:#FFF;
 	border:none;
 	display:block;
-	/*float:right;*/
 	margin-bottom:0px;
 	margin-right:6px;
 	background-color: #00A3CC;
@@ -322,10 +321,8 @@ nav {
 	width:32px;
 	height:32px;
 	display:block;
-	/*position:absolute;*/
 	right:130px;
 	bottom:16px;
-	/*display:none;*/
 }
 
 #errors {
