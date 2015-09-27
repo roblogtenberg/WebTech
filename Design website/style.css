@@ -39,6 +39,10 @@ nav {
 		display: none;
 	}
 
+	#m1 {
+		display: block;
+	}
+
 	.button {
 		background-color: #00A3CC;
 		display: inline-block;
@@ -64,14 +68,9 @@ nav {
 @media only all and (max-width: 520px) {
 
 	body {
-<<<<<<< HEAD
 		max-width: 100%;
 		font-size: 35px;
 		margin: 0px;
-=======
-		width: 100%;
-		font-size: 35px;
->>>>>>> origin/master
 	}
 
 	#menuText {
@@ -101,8 +100,6 @@ nav {
 	}
 
 	#dropdown div {
-		position: absolute;
-		/*visibility: hidden;*/
 		display: none;
 		margin: 0;
 		padding: 0;
