@@ -54,12 +54,10 @@ nav {
 	#menuText {
 		display: none;
 	}
-<<<<<<< HEAD
+
 	#m1 {
 		display: block;
 	}
-=======
->>>>>>> origin/master
 
 	.button {
 		background-color: #00A3CC;
@@ -83,7 +81,6 @@ nav {
 
 	}
 
-<<<<<<< HEAD
 	.rectangle {
 		width: 310px;
 		height: auto;
@@ -108,11 +105,8 @@ nav {
 		border: 5px solid #0066CF;
 		background-color: #B0BEC5;
 	}
-}
 
-@media only all and (max-device-width: 520px) {
-=======
-	.content {
+		.content {
 	max-width: 70%;
 	margin-left: auto;
 	margin-right: auto;
@@ -124,16 +118,10 @@ nav {
 }
 }
 
-@media all and (max-device-width: 480px) {
->>>>>>> origin/master
+@media only all and (max-device-width: 520px) {
 
 	body {
 		font-size: 30px;
-	}
-
-	.content {
-		max-width: 100%;
-		border: 0;
 	}
 
 	#dropdown li {
