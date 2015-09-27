@@ -21,10 +21,10 @@
     </ul>
   </nav>
 </header>
-<section onclick="mclose()">
-  <div id="contact-form" class="clearfix">
+<section>
+  <div id="contact-form">
     <h2>Voor vragen en opmerkingen kunt u altijd met ons contact opnemen.</h2>
-    <ul id="errors" class="">
+    <ul id="errors">
       <li id="info">Er waren enkele problemen met het indienen van uw formulier:</li>
     </ul>
     <p id="success">Bedankt voor de feedback! U hoort nog van ons!</p>
@@ -36,12 +36,12 @@
       <input type="email" id="email" name="email" value="" placeholder="janvandijk@voorbeeld.com" required="required" />
 
       <label for="telephone">Telefoon: </label>
-      <input type="tel" id="telephone" name="telephone" value="" />
+      <input type="tel" id="telephone" name="telephone" placeholder="0612345678" value="" />
 
       <label for="message">Opmerking: <span class="required">*</span></label>
       <textarea id="message" name="message" placeholder="Uw bericht moet groter dan 20 karakters zijn" required="required" data-minlength="20"></textarea>
 
-      <span id="loading"></span>
+      <!-- <span id="loading"></span> -->
       <input type="submit" value="Verzenden" id="submit-button" />
       <p id="req-field-desc"><span class="required">*</span> vereist veld</p>
     </form>
