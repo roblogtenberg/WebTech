@@ -74,6 +74,11 @@ nav {
 >>>>>>> origin/master
 	}
 
+	#menuText {
+		font-size: auto;
+		height: 100px;
+	}
+
 	#dropdown li {
 		margin: 0;
 		padding: 0;
