@@ -10,10 +10,10 @@ function mopen(id)
 	ddmenuitem = document.getElementById(id);
 
 	if(opened) {
-		ddmenuitem.style.visibility = 'hidden';
+		ddmenuitem.style.display = 'none';
 		opened = false;
 	} else {
-		ddmenuitem.style.visibility = 'visible';
+		ddmenuitem.style.display = 'block';
 		opened = true;
 	}
 
@@ -21,5 +21,5 @@ function mopen(id)
 // close showed layer
 function mclose()
 {
-	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+	if(ddmenuitem) ddmenuitem.style.display = 'none';
 }

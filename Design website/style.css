@@ -3,8 +3,8 @@ header {
 }
 
 section {
-	text-align: center;
 	clear: both;
+	text-align: center;
 }
 
 footer {
@@ -15,7 +15,7 @@ footer {
 }
 
 .banner {
-	width: 100%;
+	max-width: 100%;
 	max-height: 300px;
 	display: block;
 	margin-right: auto;
@@ -33,7 +33,7 @@ nav {
 	list-style-type: none;
 }
 
-@media only screen {
+@media only all {
 	#menuText {
 		display: none;
 	}
@@ -56,14 +56,14 @@ nav {
 	}
 
 	.button:active {
-		top:1px;
+		top: 1px;
 	}
 }
 
-@media only screen and (max-device-width: 480px) {
+@media only all and (max-width: 520px) {
 
 	body {
-		width: 100%;
+		max-width: 100%;
 		font-size: 35px;
 		margin: 0px;
 	}
@@ -91,19 +91,20 @@ nav {
 
 	#dropdown div {
 		position: absolute;
-		visibility: hidden;
+		/*visibility: hidden;*/
+		display: none;
 		margin: 0;
 		padding: 0;
 		background: #EAEBD8;
 		border: 1px solid #5970B2;
-		width: 100%;
+		box-sizing: border-box;
+		max-width: 100%;
 	}
 
 	#dropdown div a {
 		position: relative;
 		display: block;
-		/*padding: 5px 10px;*/
-		width: 100%;
+		max-width: 100%;
 		white-space: nowrap;
 		text-align: center;
 		text-decoration: none;
@@ -128,11 +129,21 @@ nav {
 	transform: scaleX(-1);
 	filter: FlipH;
 	-ms-filter: "FlipH";
+	z-index: -1;
 }
 
 .contract {
 	display: inline-block;
+	margin: 20px;
 	background-size: 50px;
 	text-align: center;
-	border: 10px solid #7493DD;
+	border: 10px solid #0066CF;
+}
+
+.oval {
+	width: 300px;
+	height: 500px;
+	-moz-border-radius: 50px / 50px;
+	-webkit-border-radius: 50px / 50px;
+	border-radius: 20px / 20px;
 }
