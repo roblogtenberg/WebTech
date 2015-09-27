@@ -1,9 +1,17 @@
+html {
+	font-family: arial;
+}
+
 header {
 	background-color: #00A3CC;
 }
 
+body {
+	width: 100%;
+	margin: 0;
+}
+
 section {
-	background-color: ;
 	clear: both;
 	text-align: center;
 }
@@ -34,13 +42,9 @@ nav {
 	list-style-type: none;
 }
 
-@media only all {
+@media all {
 	#menuText {
 		display: none;
-	}
-
-	#m1 {
-		display: block;
 	}
 
 	.button {
@@ -62,20 +66,30 @@ nav {
 
 	.button:active {
 		top: 1px;
+
 	}
+
+	.content {
+	max-width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	border: solid 1px #D3D3D3;
 }
 
-@media only all and (max-width: 520px) {
+.content h3 {
+	color: #808080;
+}
+}
+
+@media all and (max-device-width: 480px) {
 
 	body {
-		max-width: 100%;
-		font-size: 35px;
-		margin: 0px;
+		font-size: 30px;
 	}
 
-	#menuText {
-		font-size: auto;
-		height: 100px;
+	.content {
+		max-width: 100%;
+		border: 0;
 	}
 
 	#dropdown li {
@@ -135,8 +149,6 @@ nav {
 	-o-transform: scaleX(-1);
 	-webkit-transform: scaleX(-1);
 	transform: scaleX(-1);
-	filter: FlipH;
-	-ms-filter: "FlipH";
 	z-index: -1;
 }
 
@@ -166,7 +178,6 @@ nav {
 }
 
 .buyButton{
-	margin-height: 5px;
 	margin-top: 5px;
 	-moz-border-radius: 10px / 10px;
 	-webkit-border-radius: 10px / 10px;
@@ -175,7 +186,7 @@ nav {
 
 #contact-form {
 	background-color:#F2F7F9;
-	width:465px;
+	max-width:465px;
 	padding:20px;
 	margin: 50px auto;    
 	border: 6px solid #00A3CC;
@@ -206,7 +217,8 @@ nav {
 #contact-form input, 
 #contact-form select, 
 #contact-form textarea {
-	width:450px;
+	width: 100%;
+	max-width:465px;
 	border: 1px solid #CEE1E8;
 	margin-bottom:20px;
 	padding:4px;
@@ -225,6 +237,7 @@ nav {
 }
 
 #contact-form label {
+	max-width: 465px;
 	display:block;
 }
 
@@ -234,12 +247,12 @@ nav {
 }
 
 #contact-form #submit-button {
-	width: 100px;
+	max-width: 100px;
 	background-color: #00A3CC;
 	color:#FFF;
 	border:none;
 	display:block;
-	float:right;
+	/*float:right;*/
 	margin-bottom:0px;
 	margin-right:6px;
 	background-color: #00A3CC;
@@ -259,10 +272,10 @@ nav {
 	width:32px;
 	height:32px;
 	display:block;
-	position:absolute;
+	/*position:absolute;*/
 	right:130px;
 	bottom:16px;
-	display:none;
+	/*display:none;*/
 }
 
 #errors {
@@ -270,7 +283,7 @@ nav {
 	padding:10px;
 	margin:25px 0px;
 	display:block;
-	width:437px;
+	max-width:437px;
 	-webkit-border-radius:8px;
 	-moz-border-radius:8px;
 	border-radius:8px;
@@ -300,7 +313,7 @@ nav {
 	padding:25px 10px;
 	margin:25px 0px;
 	display:block;
-	width:437px;
+	max-width:437px;
 	-webkit-border-radius:8px;
 	-moz-border-radius:8px;
 	border-radius:8px;
@@ -315,17 +328,8 @@ nav {
 
 #req-field-desc {
 	font-style:italic;
+	max-width: 465px;
 }
-
-/* Remove box shadow firefox, chrome and opera put around required fields. It looks rubbish. */
-input:required, textarea:required {
-	-moz-box-shadow:none;
-	-webkit-box-shadow:none;
-	-o-box-shadow:none;
-	box-shadow:none;
-}
-
-/* Normalize placeholder styles */
 
 /* chrome, safari */
 ::-webkit-input-placeholder {
