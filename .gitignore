@@ -71,4 +71,3 @@ local.properties
 .buildpath
 .recommenders\*
 .recommenders/*
-*.server
