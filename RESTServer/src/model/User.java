@@ -1,5 +1,9 @@
 package model;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class User {
 
 	private String surname;
@@ -14,10 +18,12 @@ public class User {
 		this.nickname = nickname;
 	}
 
+	@XmlAttribute
 	public String getSurname() {
 		return surname;
 	}
 
+	@XmlAttribute
 	public String getLastname() {
 		if (prefix == null) {
 			return lastname;
@@ -26,10 +32,12 @@ public class User {
 		}
 	}
 
+	@XmlAttribute
 	public String getNickname() {
 		return nickname;
 	}
 
+	@XmlAttribute
 	public String getName() {
 		if (prefix == null) {
 			return surname + " " + lastname;
