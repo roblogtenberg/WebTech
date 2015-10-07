@@ -6,5 +6,6 @@ public class MyREST extends ResourceConfig {
 	
 	public MyREST() {
 		packages("resources");
+		register(com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider.class);
 	}
 }

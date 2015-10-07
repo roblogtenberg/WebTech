@@ -16,10 +16,10 @@ public class MovieResource {
 	@Context ServletContext context;
 	
 	@GET
-	@Produces({MediaType.APPLICATION_XML})
-	public Object getParameter(@QueryParam("title") String title, @QueryParam("imbd_id") String imbd_id) {
-		if(imbd_id != null) {
-			return getMovieById(imbd_id);
+	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	public Object getParameter(@QueryParam("title") String title, @QueryParam("imdb_id") String imdb_id) {
+		if(imdb_id != null) {
+			return getMovieById(imdb_id);
 		} 
 		if(title != null) {
 			return getTitle(title);
