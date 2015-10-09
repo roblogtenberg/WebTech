@@ -4,17 +4,17 @@ public class Rating {
 
 	private int rating;
 	private Movie movie;
-	private User user;
 
-	public Rating(int rating) {
+	public Rating(int rating, Movie movie) {
 		this.rating = rating;
+		this.movie = movie;
 	}
 
-	public void setRating(int rating) {
-		if (rating >= 5 && rating <= 0.5) {
-			this.rating = rating;
-		} else {
-			System.out.println("Rating is onjuist.");
-		}
+	public int getRating() {
+		return rating;
+	}
+	
+	public Movie getMovie() {
+		return movie;
 	}
 }

@@ -16,11 +16,10 @@ public class Movie {
 	private int length;
 	private String director;
 	private String description;
-	
+
 	public Movie() {
-		
 	}
-	
+
 	public Movie(int id, String IMBDCode, String title, String date, int length, String director, String description) {
 		this.id = id;
 		this.IMBDCode = IMBDCode;
@@ -30,38 +29,38 @@ public class Movie {
 		this.director = director;
 		this.description = description;
 	}
-	
+
 	@XmlTransient
 	@JsonIgnore
 	public int getId() {
 		return id;
 	}
-	
+
 	@XmlAttribute
 	public String getIMBDCode() {
 		return IMBDCode;
 	}
-	
+
 	@XmlAttribute
 	public String getTitle() {
 		return title;
 	}
-	
+
 	@XmlAttribute
 	public String getDate() {
 		return date;
 	}
-	
+
 	@XmlAttribute
 	public int getLength() {
 		return length;
 	}
-	
+
 	@XmlAttribute
 	public String getDirector() {
 		return director;
 	}
-	
+
 	@XmlAttribute
 	public String getDescription() {
 		return description;
