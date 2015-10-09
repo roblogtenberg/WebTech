@@ -20,10 +20,10 @@ public class RatingResource {
 	ServletContext context;
 
 	@POST
-	public void setRating(@QueryParam("rating") String rating, @QueryParam("imdb_id") String imdb_id, @QueryParam("user") String user) {
+	public void setRating(@QueryParam("rating") String rating, @QueryParam("imdb_id") String imdb_id, @QueryParam("user") String name) {
 		Model model = (Model) context.getAttribute("model");
 		Movie movie = model.getMovieById(imdb_id);
-		User user = model.getUserByName(user);
+		User user = model.getUserByName(name);
 	}
 
 	@GET
@@ -36,6 +36,13 @@ public class RatingResource {
 		}
 
 		return "not found";
+	}
+
+	public Movie getMovieById(String id) {
+		Model model = (Model) context.getAttribute("model");
+		 Movie movie = new Movie(1, "2", "Maze runner", "5-10-2015", 120,
+		 "Michael Bay", "description");
+		return movie;
 	}
 
 	public String getRating(String rating) {
