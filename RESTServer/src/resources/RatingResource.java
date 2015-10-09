@@ -8,6 +8,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import model.Model;
 import model.Movie;
 
 @Path("/ratings")
@@ -31,8 +32,9 @@ public class RatingResource {
 	}
 
 	public Movie getMovieById(String id) {
-		// Model model = (Model) context.getAttribute("model");
-		Movie movie = new Movie(1, "2", "Maze runner", "5-10-2015", 120, "Michael Bay", "description");
+		Model model = (Model) context.getAttribute("model");
+		 Movie movie = new Movie(1, "2", "Maze runner", "5-10-2015", 120,
+		 "Michael Bay", "description");
 		return movie;
 	}
 
