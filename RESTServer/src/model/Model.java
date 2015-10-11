@@ -10,10 +10,13 @@ public class Model {
 
 	public Model() {
 		movies.add(new Movie(1, "2", "Maze runner", "5-10-2015", 120, "Michael Bay", "description"));
+		users.add(new User("Jan", "van", "Maat", "aids"));
+		users.add(new User("Klaas", "", "Grote", "herpes"));
 	}
 
 	public void addUser(User user) {
 		users.add(user);
+		System.out.println(user.getName());
 		System.out.println("User added");
 	}
 
@@ -43,9 +46,9 @@ public class Model {
 		return null;
 	}
 
-	public User getUserByName(String name) {
+	public User getUserByNickname(String nickname) {
 		for (User user : users) {
-			if (user.getNickname().equals(name)) {
+			if (user.getNickname().equals(nickname)) {
 				return user;
 			}
 		}
