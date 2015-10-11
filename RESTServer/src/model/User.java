@@ -32,7 +32,6 @@ public class User {
 	}
 
 	public User(String surname, String prefix, String lastname, String nickname, String password) {
-
 		this.surname = surname;
 		this.prefix = prefix;
 		this.lastname = lastname;
@@ -69,6 +68,7 @@ public class User {
 	}
 
 	@XmlTransient
+	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}
@@ -77,7 +77,8 @@ public class User {
 		ratings.add(rating);
 	}
 
-	@XmlAttribute
+	@XmlTransient
+	@JsonIgnore
 	public ArrayList<Rating> getRatings() {
 		return ratings;
 	}
@@ -90,5 +91,25 @@ public class User {
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public boolean changeRating(String imdbId, int rating) {
+		for (int i = 0; i < ratings.size(); i++) {
+			if (ratings.get(i).getMovie().getIMBDCode().equals(imdbId)) {
+				ratings.set(i, new Rating(rating, ratings.get(i).getMovie()));
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean removeRating(String imdbId) {
+		for (int i = 0; i < ratings.size(); i++) {
+			if (ratings.get(i).getMovie().getIMBDCode().equals(imdbId)) {
+				ratings.remove(i);
+				return true;
+			}
+		}
+		return false;
 	}
 }

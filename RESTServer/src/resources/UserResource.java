@@ -18,34 +18,17 @@ import model.User;
 @Path("/users")
 public class UserResource {
 
-	private String surname;
-	private String prefix;
-	private String lastname;
-	private String nickname;
-
 	@Context
 	ServletContext context;
 
 	@POST
-	// @Produces({ MediaType.APPLICATION_XML })
-	public Object getParameter(@QueryParam("surname") String surname, @QueryParam("prefix") String prefix,
-			@QueryParam("lastname") String lastname, @QueryParam("nickname") String nickname) {
+	public Response addUser(@QueryParam("surname") String surname, @QueryParam("prefix") String prefix, @QueryParam("lastname") String lastname, @QueryParam("nickname") String nickname, @QueryParam("password") String password) {
 		Model model = (Model) context.getAttribute("model");
-		if (surname != null && !surname.isEmpty()) {
-			this.surname = surname;
-		} else {
+		if (surname == null || surname.isEmpty()) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 
-		if (prefix != null && !prefix.isEmpty()) {
-			this.prefix = prefix;
-		} else {
-			return Response.status(Response.Status.BAD_REQUEST).build();
-		}
-
-		if (lastname != null && !lastname.isEmpty()) {
-			this.lastname = lastname;
-		} else {
+		if (lastname == null || lastname.isEmpty()) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 
@@ -53,24 +36,20 @@ public class UserResource {
 			if (model.getUserByNickname(nickname) != null) {
 				if (model.getUserByNickname(nickname).getNickname().equals(nickname)) {
 					return Response.status(Response.Status.CONFLICT).build();
-				} else {
-					this.nickname = nickname;
 				}
 			}
 		} else {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 
-		User user = new User(surname, prefix, lastname, nickname);
-		model.addUser(user);
+		model.addUser(new User(surname, prefix, lastname, nickname, password));
 		return Response.status(Response.Status.OK).build();
-
 	}
 
 	@Path("/get")
 	@GET
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public List<User> getParameter(@QueryParam("getUsers") String getUsers) {
+	public List<User> getUsers() {
 		Model model = (Model) context.getAttribute("model");
 		List<User> usersList = model.getUsers();
 		return usersList;

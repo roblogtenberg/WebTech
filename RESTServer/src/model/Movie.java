@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Movie {
 
 	private int id;
-	private String IMBDCode;
+	private String IMDBCode;
 	private String title;
 	private String date;
 	private int length;
@@ -22,7 +22,7 @@ public class Movie {
 
 	public Movie(int id, String IMBDCode, String title, String date, int length, String director, String description) {
 		this.id = id;
-		this.IMBDCode = IMBDCode;
+		this.IMDBCode = IMBDCode;
 		this.title = title;
 		this.date = date;
 		this.length = length;
@@ -38,7 +38,7 @@ public class Movie {
 
 	@XmlAttribute
 	public String getIMBDCode() {
-		return IMBDCode;
+		return IMDBCode;
 	}
 
 	@XmlAttribute

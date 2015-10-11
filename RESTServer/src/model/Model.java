@@ -7,11 +7,13 @@ public class Model {
 
 	private List<Movie> movies = new ArrayList<>();
 	private List<User> users = new ArrayList<>();
-
+	private List<Rating> test = new ArrayList<>();
+	
 	public Model() {
 		movies.add(new Movie(1, "2", "Maze runner", "5-10-2015", 120, "Michael Bay", "description"));
 		users.add(new User("Jan", "van", "Maat", "aids", "dema"));
 		users.add(new User("Klaas", "Grote", "herpes", "dema"));
+		test.add(new Rating(2,new Movie(1, "2", "Maze runner", "5-10-2015", 120, "Michael Bay", "description")));
 	}
 
 	public void addUser(User user) {
@@ -54,4 +56,36 @@ public class Model {
 		}
 		return null;
 	}
+
+	public List<Rating> getRatings() {
+//		List<Rating> ratings = new ArrayList<>();
+//		for (User user : users) {
+//			ratings.addAll(user.getRatings());
+//		}
+//		return ratings;
+		return test;
+	}
+
+	public boolean checkToken(String token) {
+		for (User user : users) {
+			if (user.getToken() != null) {
+				if (user.getToken().equals(token)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public User getUserFromToken(String token) {
+		for (User user : users) {
+			if (user.getToken() != null) {
+				if (user.getToken().equals(token)) {
+					return user;
+				}
+			}
+		}
+		return null;
+	}
+
 }
