@@ -29,61 +29,63 @@ public class RatingResource {
 	public Response removeRating(@QueryParam("token") String token, @QueryParam("imdbId") String imdbId) {
 		Model model = (Model) context.getAttribute("model");
 		User user;
-		
-		if(token == null || token.isEmpty()) {
+
+		if (token == null || token.isEmpty()) {
 			return Response.status(Response.Status.UNAUTHORIZED).build();
 		}
-		
+
 		if (model.checkToken(token)) {
 			user = model.getUserFromToken(token);
 		} else {
 			return Response.status(Response.Status.UNAUTHORIZED).build();
 		}
-		
-		if(!user.removeRating(imdbId)) {
+
+		if (!user.removeRating(imdbId)) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
-		
+
 		return Response.status(Response.Status.OK).build();
 	}
-	
+
 	@PUT
-	public Response changeRating(@QueryParam("token") String token, @QueryParam("imdbId") String imdbId, @QueryParam("rating") String rating) {
+	public Response changeRating(@QueryParam("token") String token, @QueryParam("imdbId") String imdbId,
+			@QueryParam("rating") String rating) {
 		Model model = (Model) context.getAttribute("model");
 		User user;
-		
-		if(token == null || token.isEmpty()) {
+
+		if (token == null || token.isEmpty()) {
 			return Response.status(Response.Status.UNAUTHORIZED).build();
 		}
-		
+
 		if (model.checkToken(token)) {
 			user = model.getUserFromToken(token);
 		} else {
 			return Response.status(Response.Status.UNAUTHORIZED).build();
 		}
-		
-		if(!user.changeRating(imdbId, Integer.valueOf(rating))) {
+
+		if (!user.changeRating(imdbId, Integer.valueOf(rating))) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
-		
+
 		return Response.status(Response.Status.OK).build();
 	}
 
 	@POST
-	public Response setRating(@QueryParam("rating") String rating, @QueryParam("imdbId") String imdbId, @QueryParam("token") String token) {
+	public Response setRating(@QueryParam("rating") String rating, @QueryParam("imdbId") String imdbId,
+			@QueryParam("token") String token) {
 		Model model = (Model) context.getAttribute("model");
 		User user;
-		
-		if(token == null || token.isEmpty()) {
+
+		if (token == null || token.isEmpty()) {
 			return Response.status(Response.Status.UNAUTHORIZED).build();
 		}
-		
+
 		if (model.checkToken(token)) {
 			user = model.getUserFromToken(token);
 		} else {
 			return Response.status(Response.Status.UNAUTHORIZED).build();
 		}
-		
+
 		Movie movie = model.getMovieById(imdbId);
 		if (movie == null) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
@@ -92,7 +94,7 @@ public class RatingResource {
 		if (Integer.valueOf(rating) < 0.5 || Integer.valueOf(rating) > 5) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
-		
+
 		user.addRating(new Rating(Integer.valueOf(rating), movie));
 		return Response.status(Response.Status.OK).build();
 	}
@@ -100,7 +102,7 @@ public class RatingResource {
 	@Path("/get")
 	@GET
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public List<Rating> getUsers() {
+	public List<Rating> getRating() {
 		Model model = (Model) context.getAttribute("model");
 		List<Rating> ratings = model.getRatings();
 		return ratings;

@@ -65,4 +65,10 @@ public class Movie {
 	public String getDescription() {
 		return description;
 	}
+
+	@Override
+	public String toString() {
+		return "id=" + id + ", IMDBCode=" + IMDBCode + ", title=" + title + ", date=" + date + ", length=" + length
+				+ ", director=" + director + ", description=" + description;
+	}
 }

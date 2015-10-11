@@ -7,13 +7,17 @@ public class Model {
 
 	private List<Movie> movies = new ArrayList<>();
 	private List<User> users = new ArrayList<>();
-	private List<Rating> test = new ArrayList<>();
-	
+	private List<Rating> ratings = new ArrayList<>();
+
 	public Model() {
-		movies.add(new Movie(1, "2", "Maze runner", "5-10-2015", 120, "Michael Bay", "description"));
-		movies.add(new Movie(2, "4", "Klaaskaas", "25-12-2010", 150, "Jan Kooijman", "description"));
+		Movie maze = new Movie(1, "2", "Maze runner", "5-10-2015", 120, "Michael Bay", "description");
+		Movie klaas = new Movie(2, "4", "Klaaskaas", "25-12-2010", 150, "Jan Kooijman", "description");
+		movies.add(maze);
+		movies.add(klaas);
 		users.add(new User("Jan", "van", "Maat", "janmaat32", "ewrt1"));
 		users.add(new User("Klaas", "Grote", "klagrot", "appel44"));
+		ratings.add(new Rating(4, maze));
+		ratings.add(new Rating(2, klaas));
 	}
 
 	public void addUser(User user) {
@@ -28,6 +32,10 @@ public class Model {
 
 	public List<Movie> getMovies() {
 		return movies;
+	}
+
+	public List<Rating> getRatings() {
+		return ratings;
 	}
 
 	public Movie getMovieById(String imdb_id) {
@@ -55,15 +63,6 @@ public class Model {
 			}
 		}
 		return null;
-	}
-
-	public List<Rating> getRatings() {
-//		List<Rating> ratings = new ArrayList<>();
-//		for (User user : users) {
-//			ratings.addAll(user.getRatings());
-//		}
-//		return ratings;
-		return test;
 	}
 
 	public boolean checkToken(String token) {

@@ -2,6 +2,9 @@ package model;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @XmlRootElement
 public class Rating {
@@ -10,9 +13,9 @@ public class Rating {
 	private Movie movie;
 
 	public Rating() {
-		
+
 	}
-	
+
 	public Rating(int rating, Movie movie) {
 		this.rating = rating;
 		this.movie = movie;
@@ -22,9 +25,17 @@ public class Rating {
 	public int getRating() {
 		return rating;
 	}
-	
-	@XmlAttribute
-	public Movie getMovie() {
+
+	@XmlTransient
+	@JsonIgnore
+	public Movie getSingleMovie() {
 		return movie;
 	}
+
+	@XmlAttribute
+	public String getMovie() {
+		System.out.println(movie.toString());
+		return movie.toString();
+	}
+
 }
