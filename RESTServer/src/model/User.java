@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @XmlRootElement
 public class User {
@@ -17,6 +20,13 @@ public class User {
 
 	public User() {
 
+	}
+
+	public User(String surname, String lastname, String nickname) {
+		this.surname = surname;
+		this.lastname = lastname;
+		this.nickname = nickname;
+		this.ratings = new ArrayList<Rating>();
 	}
 
 	public User(String surname, String prefix, String lastname, String nickname) {
@@ -59,12 +69,12 @@ public class User {
 		return ratings;
 	}
 
-	@XmlAttribute
+	@XmlTransient
+	@JsonIgnore
 	public String getToken() {
 		return token;
 	}
 
-	@XmlAttribute
 	public void setToken(String token) {
 		this.token = token;
 	}
