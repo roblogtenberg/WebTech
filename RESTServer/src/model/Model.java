@@ -24,10 +24,19 @@ public class Model {
 	public List<Movie> getMovies() {
 		return movies;
 	}
-	
+
 	public Movie getMovieById(String imdb_id) {
-		for(Movie movie : movies) {
-			if(movie.getIMBDCode().equals(imdb_id)) {
+		for (Movie movie : movies) {
+			if (movie.getIMBDCode().equals(imdb_id)) {
+				return movie;
+			}
+		}
+		return null;
+	}
+
+	public Movie getMovieByTitle(String title) {
+		for (Movie movie : movies) {
+			if (movie.getTitle().equals(title)) {
 				return movie;
 			}
 		}
@@ -35,8 +44,8 @@ public class Model {
 	}
 
 	public User getUserByName(String name) {
-		for(User user : users) {
-			if(user.getNickname().equals(name)){
+		for (User user : users) {
+			if (user.getNickname().equals(name)) {
 				return user;
 			}
 		}
