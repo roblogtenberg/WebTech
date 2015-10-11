@@ -13,6 +13,7 @@ public class User {
 	private String lastname;
 	private String nickname;
 	private ArrayList<Rating> ratings;
+	private String token;
 
 	public User(String surname, String prefix, String lastname, String nickname) {
 		this.surname = surname;
@@ -49,7 +50,18 @@ public class User {
 		return surname + " " + prefix + " " + lastname;
 	}
 
+	@XmlAttribute
 	public ArrayList<Rating> getRatings() {
 		return ratings;
+	}
+
+	@XmlAttribute
+	public String getToken() {
+		return token;
+	}
+
+	@XmlAttribute
+	public void setToken(String token) {
+		this.token = token;
 	}
 }

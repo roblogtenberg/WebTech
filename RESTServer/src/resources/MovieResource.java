@@ -31,9 +31,10 @@ public class MovieResource {
 	}
 
 	public Movie getMovieById(String id) {
-		 Model model = (Model) context.getAttribute("model");
-		 Movie movie = model.getMovies().get(0);
-//		Movie movie = new Movie(1, "2", "Maze runner", "5-10-2015", 120, "Michael Bay", "description");
+		Model model = (Model) context.getAttribute("model");
+		Movie movie = model.getMovies().get(0);
+		// Movie movie = new Movie(1, "2", "Maze runner", "5-10-2015", 120,
+		// "Michael Bay", "description");
 		return movie;
 	}
 
