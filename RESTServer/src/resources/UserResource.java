@@ -70,7 +70,7 @@ public class UserResource {
 	@Path("/get")
 	@GET
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public List<User> getUsers(@QueryParam("getUsers") String getUsers) {
+	public List<User> getUsers() {
 		Model model = (Model) context.getAttribute("model");
 		List<User> usersList = model.getUsers();
 		return usersList;

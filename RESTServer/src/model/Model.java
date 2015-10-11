@@ -10,8 +10,9 @@ public class Model {
 
 	public Model() {
 		movies.add(new Movie(1, "2", "Maze runner", "5-10-2015", 120, "Michael Bay", "description"));
-		users.add(new User("Jan", "van", "Maat", "aids", "dema"));
-		users.add(new User("Klaas", "Grote", "herpes", "dema"));
+		movies.add(new Movie(2, "4", "Klaaskaas", "25-12-2010", 150, "Jan Kooijman", "description"));
+		users.add(new User("Jan", "van", "Maat", "janmaat32", "ewrt1"));
+		users.add(new User("Klaas", "Grote", "klagrot", "appel44"));
 	}
 
 	public void addUser(User user) {
