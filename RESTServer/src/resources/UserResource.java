@@ -1,6 +1,7 @@
 package resources;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
@@ -12,7 +13,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import model.Model;
-import model.Movie;
 import model.User;
 
 @Path("/users")
@@ -25,7 +25,6 @@ public class UserResource {
 
 	@Context
 	ServletContext context;
-	Model model = new Model();
 
 	@POST
 	// @Produces({ MediaType.APPLICATION_XML })
@@ -47,15 +46,19 @@ public class UserResource {
 			this.nickname = nickname;
 		}
 		User user = new User(surname, prefix, lastname, nickname);
+		Model model = (Model) context.getAttribute("model");
 		model.addUser(user);
 		return showAccount();
 	}
 
 	@Path("/get")
 	@GET
-	// @Produces({ MediaType.APPLICATION_XML })
-	public ArrayList<User> getParameter(@QueryParam("getUsers") String getUsers) {
-		return (ArrayList<User>) model.getUsers();
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	public List<User> getParameter(@QueryParam("getUsers") String getUsers) {
+		Model model = (Model) context.getAttribute("model");
+		List<User> iets = model.getUsers();
+		System.out.println(iets.toString());
+		return iets;
 	}
 
 	public String showAccount() {

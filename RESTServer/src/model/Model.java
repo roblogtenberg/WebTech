@@ -10,10 +10,13 @@ public class Model {
 
 	public Model() {
 		movies.add(new Movie(1, "2", "Maze runner", "5-10-2015", 120, "Michael Bay", "description"));
+		users.add(new User("Jan", "van", "Maat", "aids"));
+		users.add(new User("Klaas", "", "Grote", "herpes"));
 	}
 
 	public void addUser(User user) {
 		users.add(user);
+		System.out.println(user.getName());
 		System.out.println("User added");
 	}
 
@@ -24,19 +27,19 @@ public class Model {
 	public List<Movie> getMovies() {
 		return movies;
 	}
-	
+
 	public Movie getMovieById(String imdb_id) {
-		for(Movie movie : movies) {
-			if(movie.getIMBDCode().equals(imdb_id)) {
+		for (Movie movie : movies) {
+			if (movie.getIMBDCode().equals(imdb_id)) {
 				return movie;
 			}
 		}
 		return null;
 	}
 
-	public User getUserByName(String name) {
-		for(User user : users) {
-			if(user.getNickname().equals(name)){
+	public User getUserByNickname(String nickname) {
+		for (User user : users) {
+			if (user.getNickname().equals(nickname)) {
 				return user;
 			}
 		}

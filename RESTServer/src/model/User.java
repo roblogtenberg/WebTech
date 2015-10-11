@@ -15,6 +15,10 @@ public class User {
 	private ArrayList<Rating> ratings;
 	private String token;
 
+	public User() {
+
+	}
+
 	public User(String surname, String prefix, String lastname, String nickname) {
 		this.surname = surname;
 		this.prefix = prefix;
