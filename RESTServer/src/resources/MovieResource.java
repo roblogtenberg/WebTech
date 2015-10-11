@@ -40,7 +40,7 @@ public class MovieResource {
 	@Path("/get")
 	@GET
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public List<Movie> getUsers() {
+	public List<Movie> getMovies() {
 		Model model = (Model) context.getAttribute("model");
 		List<Movie> moviesList = model.getMovies();
 		return moviesList;
