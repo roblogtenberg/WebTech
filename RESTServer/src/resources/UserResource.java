@@ -1,6 +1,5 @@
 package resources;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -29,7 +28,7 @@ public class UserResource {
 	@POST
 	// @Produces({ MediaType.APPLICATION_XML })
 	public Object getParameter(@QueryParam("surname") String surname, @QueryParam("prefix") String prefix,
-			@QueryParam("lastname") String lastname, @QueryParam("nickname") String nickname) {
+			@QueryParam("lastname") String lastname, @QueryParam("nickname") String nickname, @QueryParam("password") String password) {
 		if (surname != null) {
 			this.surname = surname;
 		}
@@ -45,7 +44,7 @@ public class UserResource {
 		if (nickname != null) {
 			this.nickname = nickname;
 		}
-		User user = new User(surname, prefix, lastname, nickname);
+		User user = new User(surname, prefix, lastname, nickname, password);
 		Model model = (Model) context.getAttribute("model");
 		model.addUser(user);
 		return showAccount();
@@ -54,7 +53,7 @@ public class UserResource {
 	@Path("/get")
 	@GET
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public List<User> getParameter(@QueryParam("getUsers") String getUsers) {
+	public List<User> getUsers(@QueryParam("getUsers") String getUsers) {
 		Model model = (Model) context.getAttribute("model");
 		List<User> iets = model.getUsers();
 		System.out.println(iets.toString());

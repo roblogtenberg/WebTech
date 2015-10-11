@@ -11,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 
 import model.Model;
 import model.Movie;
+import model.Rating;
 import model.User;
 
 @Path("/ratings")
@@ -20,32 +21,23 @@ public class RatingResource {
 	ServletContext context;
 
 	@POST
-	public void setRating(@QueryParam("rating") String rating, @QueryParam("imdb_id") String imdb_id,
-			@QueryParam("user") String name) {
+	public void setRating(@QueryParam("rating") String rating, @QueryParam("imdb_id") String imdb_id, @QueryParam("nickname") String nickname) {
 		Model model = (Model) context.getAttribute("model");
 		Movie movie = model.getMovieById(imdb_id);
-		User user = model.getUserByNickname(name);
+		User user = model.getUserByNickname(nickname);
+		user.addRating(new Rating(Integer.valueOf(rating), movie));
+		
 	}
 
 	@GET
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Object getParameter(@QueryParam("imdb_id") String imbd_id, @QueryParam("rating") String rating) {
+	public Object getRating(@QueryParam("imdb_id") String imbd_id, @QueryParam("rating") String rating) {
 		if (imbd_id != null) {
 		}
 		if (!rating.equals(34936)) {
-			return getRating(rating);
+			
 		}
 
 		return "not found";
-	}
-
-	public Movie getMovieById(String id) {
-		Model model = (Model) context.getAttribute("model");
-		Movie movie = new Movie(1, "2", "Maze runner", "5-10-2015", 120, "Michael Bay", "description");
-		return movie;
-	}
-
-	public String getRating(String rating) {
-		return rating;
 	}
 }
