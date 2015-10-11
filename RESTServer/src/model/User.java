@@ -15,6 +15,7 @@ public class User {
 	private String prefix;
 	private String lastname;
 	private String nickname;
+	private String password;
 	private ArrayList<Rating> ratings;
 	private String token;
 
@@ -22,18 +23,21 @@ public class User {
 
 	}
 
-	public User(String surname, String lastname, String nickname) {
+	public User(String surname, String lastname, String nickname, String password) {
 		this.surname = surname;
 		this.lastname = lastname;
 		this.nickname = nickname;
+		this.password = password;
 		this.ratings = new ArrayList<Rating>();
 	}
 
-	public User(String surname, String prefix, String lastname, String nickname) {
+	public User(String surname, String prefix, String lastname, String nickname, String password) {
+
 		this.surname = surname;
 		this.prefix = prefix;
 		this.lastname = lastname;
 		this.nickname = nickname;
+		this.password = password;
 		this.ratings = new ArrayList<Rating>();
 	}
 
@@ -62,6 +66,15 @@ public class User {
 			return surname + " " + lastname;
 		}
 		return surname + " " + prefix + " " + lastname;
+	}
+
+	@XmlTransient
+	public String getPassword() {
+		return password;
+	}
+
+	public void addRating(Rating rating) {
+		ratings.add(rating);
 	}
 
 	@XmlAttribute

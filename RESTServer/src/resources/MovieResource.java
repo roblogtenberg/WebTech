@@ -9,6 +9,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import model.Model;
+import model.Movie;
 
 @Path("/movies")
 public class MovieResource {
@@ -20,7 +21,7 @@ public class MovieResource {
 	
 	@GET
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Object getParameter(@QueryParam("title") String title, @QueryParam("imdb_id") String imdb_id) {
+	public Movie getParameter(@QueryParam("title") String title, @QueryParam("imdb_id") String imdb_id) {
 		model = (Model) context.getAttribute("model");
 
 		if (imdb_id != null) {
@@ -30,6 +31,6 @@ public class MovieResource {
 			return model.getMovieByTitle(title);
 		}
 
-		return "not found";
+		return null;
 	}
 }

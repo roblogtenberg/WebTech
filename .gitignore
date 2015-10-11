@@ -75,3 +75,4 @@ local.properties
 *.json
 .recommenders/caches/identified-project-coordinates.json
 *.gen
+.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/segments.gen
