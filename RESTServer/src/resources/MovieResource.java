@@ -1,5 +1,7 @@
 package resources;
 
+import java.util.List;
+
 import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -10,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 
 import model.Model;
 import model.Movie;
+import model.User;
 
 @Path("/movies")
 public class MovieResource {
@@ -18,7 +21,7 @@ public class MovieResource {
 	private ServletContext context;
 
 	private Model model;
-	
+
 	@GET
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Movie getParameter(@QueryParam("title") String title, @QueryParam("imdb_id") String imdb_id) {
@@ -32,5 +35,14 @@ public class MovieResource {
 		}
 
 		return null;
+	}
+
+	@Path("/get")
+	@GET
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	public List<Movie> getUsers() {
+		Model model = (Model) context.getAttribute("model");
+		List<Movie> moviesList = model.getMovies();
+		return moviesList;
 	}
 }
