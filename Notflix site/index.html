@@ -10,9 +10,19 @@
     <script> 
         // wait for the DOM to be loaded 
         $(document).ready(function() { 
-            // bind 'myForm' and provide a simple callback function 
             $('#loginForm').submit(function() { 
-                alert("Thank you for your comment!"); 
+
+              alert("test");
+
+              $.post("localhost:8080/RESTServer/api/authentication",
+                {
+                  nickname: "klagrot",
+                  password: "appel44"
+                },
+                function(data, status) {
+                  alert("Data: " + data + "\nStatus: " + status);
+                });
+
             }); 
         }); 
     </script> 
@@ -20,11 +30,12 @@
 </head>
 <body>
   <div class="col-md-4">
-  <form id="loginForm" action="index.html" method="POST">
-      <input class="form-control" type="text" placeholder="nickname"/>
-      <input class="form-control" type="password" placeholder="password"/>
-      <input class="btn btn-default" type="submit" value="Submit"/>
+  <form id="loginForm" method="post">
+      <input class="form-control" id="nickname" type="text" placeholder="nickname"/>
+      <input class="form-control" id="password" type="password" placeholder="password"/>
+      <input class="btn btn-default" id="test" type="submit" value="Submit"/>
     </form>
   </div>
+  <p id="result">test</p>
 </body>
 </html>
