@@ -3,10 +3,10 @@ package resources;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -22,7 +22,7 @@ public class Authentication {
 
 	@POST
 	@Produces({MediaType.TEXT_PLAIN})
-	public Response authentication(@QueryParam("nickname") String nickname, @QueryParam("password") String password) {
+	public Response authentication(@FormParam("nickname") String nickname, @FormParam("password") String password) {
 		try {
 			// Authenticate the user using the credentials provided
 			authenticate(nickname, password);

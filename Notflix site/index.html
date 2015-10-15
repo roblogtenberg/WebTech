@@ -2,35 +2,50 @@
 <html>
 <head>
   <title>Notflix</title>
+  <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+  <!-- bootstrap -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
-  <script src="http://malsup.github.com/jquery.form.js"></script> 
 
-    <script> 
+  <script> 
         // wait for the DOM to be loaded 
         $(document).ready(function() { 
-            $('#loginForm').submit(function() { 
+          $('#loginForm').submit(function() { 
 
-              alert("test");
+              // $.post("http://localhost:8080/RESTServer/api/authentication", //?nickname=klagrot&password=appel44 
+              // {
+              //   nickname: "klagrot",
+              //   password: "appel44"
+              // }) 
+              // .done(function(data) {
+              //   alert("Data loaded" + data);
+              // }).fail(function(xhr, status, error) {
+              //   var err = eval("(" + xhr.responseText + ")");
+              //   alert(err.Message);
+              // });
 
-              $.post("localhost:8080/RESTServer/api/authentication",
-                {
-                  nickname: "klagrot",
-                  password: "appel44"
-                },
-                function(data, status) {
-                  alert("Data: " + data + "\nStatus: " + status);
-                });
+          $.ajax({
+            type:     "post",
+            url:      "http://localhost:8080/RESTServer/api/authentication",
+            data:     {nickname: "klagrot", password: "appel44"},
+            dataType: "text",
+            error: function(xhr, status, error) {
+              var err = eval("(" + xhr.responseText + ")");
+              alert(err.Message);
+            },
+            success: function () {
+              alert(" Done ! ");
+            }
+          });
 
-            }); 
         }); 
-    </script> 
+}); 
+</script> 
 
 </head>
 <body>
   <div class="col-md-4">
-  <form id="loginForm" method="post">
+    <form id="loginForm" method="post">
       <input class="form-control" id="nickname" type="text" placeholder="nickname"/>
       <input class="form-control" id="password" type="password" placeholder="password"/>
       <input class="btn btn-default" id="test" type="submit" value="Submit"/>
