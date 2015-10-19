@@ -121,7 +121,7 @@ nav {
 	}
 }
 
-@media only all and (max-device-width: 520px) {
+@media only all and (max-width: 520px) {
 
 	body {
 		font-size: 30px;

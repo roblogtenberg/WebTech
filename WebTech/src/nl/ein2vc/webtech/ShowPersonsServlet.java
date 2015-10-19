@@ -45,7 +45,8 @@ public class ShowPersonsServlet extends HttpServlet {
 		Cookie[] cookies = request.getCookies();
 
 		if (user == null) {
-			out.println("U bent niet ingelogd.");
+			out.println("U bent niet ingelogd! <a href=\"login.html\">Naar inlog pagina</a></body>" 
+					+ "</html>");
 		} else {
 			Model model = (Model) getServletContext().getAttribute("myModel");
 			List<User> users = model.getUsers();
