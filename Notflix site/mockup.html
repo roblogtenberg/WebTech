@@ -13,77 +13,95 @@
 			<div id="2">
 				<div>
 					<form id="loginForm" method="post">
-						<input class="form-control" id="nickname" type="text" placeholder="nickname"/>
 						<input class="form-control" id="password" type="password" placeholder="password"/>
+						<input class="form-control" id="nickname" type="text" placeholder="nickname"/>
 						<input class="btn btn-default" id="test" type="submit" value="Submit"/>
 					</form>
 					<div class="container">
-
 						<div class="row">
-
 							<div class="col-lg-12">
 								<h1 class="page-header">Movies</h1>
 							</div>
-
 							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-								<a class="thumbnail" href="#">
+								<a class="thumbnail" href="#popup1">
+									<img class="img-responsive" src="http://placehold.it/400x300" alt="">
+									<fieldset class="rating">
+										<input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+										<input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+										<input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+										<input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+										<input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+										<input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+										<input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+										<input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+										<input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+										<input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+									</fieldset>
+								</a>
+							</div>
+							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+								<a class="thumbnail" href="#popup1">
 									<img class="img-responsive" src="http://placehold.it/400x300" alt="">
 								</a>
 							</div>
 							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-								<a class="thumbnail" href="#">
+								<a class="thumbnail" href="#popup1">
 									<img class="img-responsive" src="http://placehold.it/400x300" alt="">
 								</a>
 							</div>
 							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-								<a class="thumbnail" href="#">
+								<a class="thumbnail" href="#popup1">
 									<img class="img-responsive" src="http://placehold.it/400x300" alt="">
 								</a>
 							</div>
 							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-								<a class="thumbnail" href="#">
+								<a class="thumbnail" href="#popup1">
 									<img class="img-responsive" src="http://placehold.it/400x300" alt="">
 								</a>
 							</div>
 							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-								<a class="thumbnail" href="#">
+								<a class="thumbnail" href="#popup1">
 									<img class="img-responsive" src="http://placehold.it/400x300" alt="">
 								</a>
 							</div>
 							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-								<a class="thumbnail" href="#">
+								<a class="thumbnail" href="#popup1">
 									<img class="img-responsive" src="http://placehold.it/400x300" alt="">
 								</a>
 							</div>
 							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-								<a class="thumbnail" href="#">
+								<a class="thumbnail" href="#popup1">
 									<img class="img-responsive" src="http://placehold.it/400x300" alt="">
 								</a>
 							</div>
 							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-								<a class="thumbnail" href="#">
+								<a class="thumbnail" href="#popup1">
 									<img class="img-responsive" src="http://placehold.it/400x300" alt="">
 								</a>
 							</div>
 							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-								<a class="thumbnail" href="#">
+								<a class="thumbnail" href="#popup1">
 									<img class="img-responsive" src="http://placehold.it/400x300" alt="">
 								</a>
 							</div>
 							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-								<a class="thumbnail" href="#">
+								<a class="thumbnail" href="#popup1">
 									<img class="img-responsive" src="http://placehold.it/400x300" alt="">
 								</a>
 							</div>
 							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-								<a class="thumbnail" href="#">
+								<a class="thumbnail" href="#popup1">
 									<img class="img-responsive" src="http://placehold.it/400x300" alt="">
 								</a>
 							</div>
-							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-								<a class="thumbnail" href="#">
-									<img class="img-responsive" src="http://placehold.it/400x300" alt="">
-								</a>
+							<div id="popup1" class="overlay">
+								<div class="popup">
+									<h2>Here i am</h2>
+									<a class="close" href="#">X</a>
+									<div class="content">
+										Thanks for pop me out of that button, but now i'm done so you can close this window.
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
