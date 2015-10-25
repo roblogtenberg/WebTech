@@ -10,8 +10,8 @@ public class Model {
 	private List<Rating> ratings = new ArrayList<>();
 
 	public Model() {
-		Movie maze = new Movie(1, "2", "Maze runner", "5-10-2015", 120, "Michael Bay", "description");
-		Movie klaas = new Movie(2, "4", "Klaaskaas", "25-12-2010", 150, "Jan Kooijman", "description");
+		Movie maze = new Movie(1, "tt1790864", "Maze Runner", "25-9-2014", 113, "Wes Ball", "Thomas is deposited in a community of boys after his memory is erased, soon learning they're all trapped in a maze that will require him to join forces with fellow 'runners' for a shot at escape.");
+		Movie klaas = new Movie(2, "tt1840309", "Divergent", "3-4-2014", 139, "Neil Burger", "In a world divided by factions based on virtues, Tris learns she's Divergent and won't fit in. When she discovers a plot to destroy Divergents, Tris and the mysterious Four must find out what makes Divergents dangerous before it's too late.");
 		movies.add(maze);
 		movies.add(klaas);
 		users.add(new User("Jan", "van", "Maat", "janmaat32", "ewrt1"));

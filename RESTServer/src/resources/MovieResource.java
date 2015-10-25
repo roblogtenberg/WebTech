@@ -12,7 +12,6 @@ import javax.ws.rs.core.MediaType;
 
 import model.Model;
 import model.Movie;
-import model.User;
 
 @Path("/movies")
 public class MovieResource {

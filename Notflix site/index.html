@@ -11,19 +11,6 @@
         // wait for the DOM to be loaded 
         $(document).ready(function() { 
           $('#loginForm').submit(function() { 
-
-              // $.post("http://localhost:8080/RESTServer/api/authentication", //?nickname=klagrot&password=appel44 
-              // {
-              //   nickname: "klagrot",
-              //   password: "appel44"
-              // }) 
-              // .done(function(data) {
-              //   alert("Data loaded" + data);
-              // }).fail(function(xhr, status, error) {
-              //   var err = eval("(" + xhr.responseText + ")");
-              //   alert(err.Message);
-              // });
-
           $.ajax({
             type:     "post",
             url:      "http://localhost:8080/RESTServer/api/authentication",
@@ -51,6 +38,5 @@
       <input class="btn btn-default" id="test" type="submit" value="Submit"/>
     </form>
   </div>
-  <p id="result">test</p>
 </body>
 </html>

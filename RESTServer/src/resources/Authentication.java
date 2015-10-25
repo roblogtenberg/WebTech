@@ -3,6 +3,7 @@ package resources;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -22,7 +23,9 @@ public class Authentication {
 
 	@POST
 	@Produces({MediaType.TEXT_PLAIN})
+	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
 	public Response authentication(@FormParam("nickname") String nickname, @FormParam("password") String password) {
+		System.out.println(nickname + "   " + password);
 		try {
 			// Authenticate the user using the credentials provided
 			authenticate(nickname, password);

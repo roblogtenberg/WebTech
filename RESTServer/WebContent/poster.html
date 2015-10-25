@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Poster test</title>
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script>
+    $(document).ready(function() {
+     $("#submitButton").click(function(){
+      $.ajax({
+        type:     "post",
+        url:      "http://www.omdbapi.com/?t=jurassic&y=&plot=short&r=json",
+        dataType: "json",
+        error: function(xhr, status, error) {
+          alert("Uw inlognaam of wachtwoord is verkeerd");
+        },
+        success: function (data) {
+          console.log(data['Poster']);
+          $("#result").append('<img src="'+data['Poster']+'" alt="poster"/>');
+        }
+      });
+    });
+   });
+  </script>
+</head>
+<body>
+  <button id="submitButton">test</button>
+  <div id="result">test</div>
+</body>
+</html>
