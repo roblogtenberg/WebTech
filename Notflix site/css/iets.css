@@ -1,0 +1,62 @@
+.navigation {
+	height: 1000px;
+}
+
+.content {
+	display: inline;
+	float: right;
+}
+
+#l{
+	width:132px;
+	min-width:132px;
+	position:relative;
+	display: inline-block;
+	z-index:100;
+	font-size:14px;
+	line-height:1.5;
+	font-family:OpenSans,"Helvetica Neue",Helvetica,Arial,Geneva,sans-serif;
+	font-weight:300;
+	height:auto;
+	margin:0;
+	padding:0;
+	background:#111;
+	color:#000;
+	overflow:hidden;
+	float: left;
+}
+
+.headerDing {
+	width: auto;
+	color: #000;
+}
+
+#r {
+	float: right;
+}
+
+#loginForm {
+	text-align: right;
+}
+section {
+	clear: both;
+}
+
+.form-control {
+	float: right;
+	max-width: 150px;
+	display: inline;
+}
+
+.thumb {
+	margin-bottom: 30px;
+}
+
+.page-header {
+	color: #FFF;
+}
+
+.thumbnail {
+	width: 200px;
+	height: 300px;
+}
