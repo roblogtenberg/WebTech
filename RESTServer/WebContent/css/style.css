@@ -38,16 +38,10 @@ header {
 }
 
 #loginForm {
-  text-align: right;
+  float: right;
 }
 section {
   clear: both;
-}
-
-.form-control {
-  float: right;
-  max-width: 150px;
-  display: inline;
 }
 
 .thumb {
@@ -64,7 +58,9 @@ section {
   height: 300px;
 }
 
-
+.btn {
+  float: right;
+}
 
 body {
   font-family: Arial, sans-serif;
