@@ -51,7 +51,6 @@ header {
   float: right;
 }
 
-
 .thumb {
   margin-bottom: 30px;
 }
@@ -64,10 +63,6 @@ header {
 .thumbnail {
   width: 200px;
   height: 300px;
-}
-
-.btn {
-  float: right;
 }
 
 h1 {

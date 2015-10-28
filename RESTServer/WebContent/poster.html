@@ -5,10 +5,11 @@
   <script src="js/jquery-1.11.3.min.js"></script>
   <script>
     $(document).ready(function() {
+      console.log("http://www.omdbapi.com/?t=" + $("#test").val() + "&y=&plot=short&r=json");
      $("#submitButton").click(function(){
       $.ajax({
         type:     "post",
-        url:      "http://www.omdbapi.com/?t=jurassic&y=&plot=short&r=json",
+        url:      "http://www.omdbapi.com/?t=" + $("#test").val() + "&y=&plot=short&r=json",
         dataType: "json",
         error: function(xhr, status, error) {
           alert("Uw inlognaam of wachtwoord is verkeerd");
@@ -23,6 +24,7 @@
   </script>
 </head>
 <body>
+<input type="text" id="test">
   <button id="submitButton">test</button>
   <div id="result">test</div>
 </body>
