@@ -37,9 +37,6 @@ header {
   float: right;
 }
 
-#loginForm {
-  float: right;
-}
 section {
   clear: both;
 }
@@ -58,14 +55,9 @@ section {
   height: 300px;
 }
 
-.btn {
-  float: right;
-}
 
 body {
   font-family: Arial, sans-serif;
-  background: url(4.jpg);
-  background-size: cover;
 }
 
 h1 {
