@@ -19,9 +19,26 @@ header {
   height: 1100px;
 }
 
+.createUserForm {
+  text-align: center;
+}
+
 .content {
   display: inline;
   float: right;
+}
+
+#leftBarButton {
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 120px;
+}
+
+#leftBarButton:hover {
+  background: #B9090B;
+  color: #fff;
+  border-color: #B9090B;
 }
 
 #leftBar{

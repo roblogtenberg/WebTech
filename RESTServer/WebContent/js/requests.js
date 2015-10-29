@@ -21,11 +21,9 @@ function loginCheck(loginData, nickname) {
     data: loginData,
     dataType: "text",
     error: function(xhr, status, error) {
-      console.log(loginData);
       alert("Uw inlognaam of wachtwoord is verkeerd");
     },
     success: function (data) {
-      console.log(loginData);
       $("#loginForm").css("display", "none");
       $("#submitButton").css("display", "none");
       $("#result").append("Welkom," + nickname);
@@ -39,3 +37,12 @@ $(document).ready(function(){
     loginCheck($("#loginForm").serialize(), $("#nickname").val());
   });
 });
+
+function createUser(registerData, wachtwoord) {
+  $.ajax({
+    type:   "post",
+    contentType: "application/x-www-form-urlencoded",
+    url: "api/users"
+
+  })
+}
