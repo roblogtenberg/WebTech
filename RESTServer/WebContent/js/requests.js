@@ -57,8 +57,15 @@ function createUser(registerData, wachtwoord) {
   $.ajax({
     type:   "post",
     contentType: "application/x-www-form-urlencoded",
-    url: "api/users"
-
+    url: "api/users",
+    data: loginData,
+    dataType: "text",
+    error: function(xhr, status, error) {
+      alert("Er gaat iets mis");
+    },
+    success: function (data) {
+      alert("Er gaat iets mis");
+    }
   });
 }
 
@@ -66,19 +73,16 @@ function getMovies() {
  $.ajax({
   type:     "get",
   url:      "api/movies/get",
-  data:     "json",
+  dataType: "json",
   error: function(xhr, status, error) {
     alert("Er was een fout tijdens het ophalen van de movies");
   },
   success: function (data) {
-    alert("get movie succes");
-    console.log(data.movie['titel']);
+    alert("get movie succes");    
     $.each(data, function(i, item) {
-      console.log(item.titel);
-      console.log(item['titel']);
-      debugger;
-      getPoster(item['titel']);
+      getPoster(item.title);
+      console.log(item.title);
     });
   }
-}); 
+});
 }
