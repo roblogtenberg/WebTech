@@ -11,17 +11,19 @@
 		<body>
 			<div id="leftBar">
 				<img src="images/logo.png">
-				<div class="navigation"></div>
+				<div class="navigation">
+					<form action="createuser.html">
+						<input class="btn btn-default" id="leftBarButton" type="submit" value="Create user">
+					</form>
+				</div>
 			</div>
 			<div>
 				<div>
-					<div id="oneLine">
-						<div id="oneLine">
-							<form id="searchForm" method="post" class="form-inline">
-								<input class="form-control"	id="searchBar" type="text" placeholder="Search for movies...">
-								<input class="btn btn-default" id="search" type="button" value="Search">
-							</form>
-						</div>
+					<div>
+						<form id="searchForm" method="post" class="form-inline">
+							<input class="form-control"	id="searchBar" type="text" placeholder="Search for movies...">
+							<input class="btn btn-default" id="search" type="button" value="Search">
+						</form>
 						<div>
 							<form id="loginForm" method="post" class="form-inline">
 								<input class="form-control" id="nickname" type="text" placeholder="nickname">
