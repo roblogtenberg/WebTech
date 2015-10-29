@@ -2,28 +2,33 @@
 <html>
 <head>
 	<title>Create User</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
 <body>
-	<form class="createUserForm">
-		<img src="	images/logo.png">
-		Personal information:
-		First name:<br>
-		<input type="text" name="firstname" value="">
-		<br>
-		Prefix:<br>
-		<input type="text" name="prefix" value="">
-		<br>
-		First name:<br>
-		<input type="text" name="firstname" value="">
-		<br>
-		Nickname:<br>
-		<input type="text" name="nickname" value="">
-		<br>
-		Password:<br>
-		<input type="password" name="firstname" value="">
-		<br>
-		<br>
-	</form>
-	<button type="submit" value="Submit">Create</button>
+	<div align="center"> 
+		<form class="createUserForm">
+			<img src="	images/logo.png">
+			<br>
+			Personal information
+			<br>
+			First name:<br>
+			<input class="form-control" type="text" name="firstname" value="">
+			<br>
+			Prefix:<br>
+			<input class="form-control" type="text" name="prefix" value="">
+			<br>
+			First name:<br>
+			<input class="form-control" type="text" name="firstname" value="">
+			<br>
+			Nickname:<br>
+			<input class="form-control" type="text" name="nickname" value="">
+			<br>
+			Password:<br>
+			<input class="form-control" type="password" name="firstname" value="">
+			<br>
+		</form>
+		<button class="btn btn-default" type="submit" value="Submit">Create account</button>
+	</div>
 </body>
 </html>

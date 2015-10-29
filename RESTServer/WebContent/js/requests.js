@@ -42,7 +42,14 @@ function createUser(registerData, wachtwoord) {
   $.ajax({
     type:   "post",
     contentType: "application/x-www-form-urlencoded",
-    url: "api/users"
-
+    url: "api/users",
+    data: loginData,
+    dataType: "text",
+    error: function(xhr, status, error) {
+      alert("Er gaat iets mis");
+    },
+    success: function (data) {
+      alert("Er gaat iets mis");
+    }
   })
 }
