@@ -30,3 +30,9 @@ function loginCheck(loginData, nickname) {
           }
         });
 }
+
+$(document).ready(function(){
+      $("#submitButton").click(function(){
+        loginCheck($("#loginForm").serialize(), $("#nickname").val());
+      });
+    });
