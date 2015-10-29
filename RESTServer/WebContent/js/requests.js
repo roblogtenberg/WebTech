@@ -14,25 +14,28 @@ function getPoster(movieName) {
 }
 
 function loginCheck(loginData, nickname) {
-    $.ajax({
-          type:     "post",
-          contentType: "application/x-www-form-urlencoded",
-          url:      "api/authentication",
-          data: loginData,
-          dataType: "text",
-          error: function(xhr, status, error) {
-            alert("Uw inlognaam of wachtwoord is verkeerd");
-          },
-          success: function (data) {
-            $("#loginForm").css("display", "none");
-            $("#submitButton").css("display", "none");
-            $("#result").append("Welkom," + nickname);
-          }
-        });
+  $.ajax({
+    type:     "post",
+    contentType: "application/x-www-form-urlencoded",
+    url:      "api/authentication",
+    data: loginData,
+    dataType: "text",
+    error: function(xhr, status, error) {
+      console.log(loginData);
+      alert("Uw inlognaam of wachtwoord is verkeerd");
+    },
+    success: function (data) {
+      console.log(loginData);
+      $("#loginForm").css("display", "none");
+      $("#submitButton").css("display", "none");
+      $("#result").append("Welkom," + nickname);
+    }
+  });
 }
 
 $(document).ready(function(){
-      $("#submitButton").click(function(){
-        loginCheck($("#loginForm").serialize(), $("#nickname").val());
-      });
-    });
+  $("#submitButton").click(function(){
+    console.log("logindata" + $("#loginForm").val());
+    loginCheck($("#loginForm").serialize(), $("#nickname").val());
+  });
+});

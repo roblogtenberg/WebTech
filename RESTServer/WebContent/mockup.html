@@ -4,22 +4,26 @@
 	<title>Notflix</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script src="js/jquery-1.11.3.min.js"></script>
 	<script src="js/requests.js"></script>
 </head>
 <body>
-	<div id="l">
+	<div id="leftBar">
 		<img src="images/logo.png">
 		<div class="navigation"></div>
 	</div>
-	<div id="2">
-		<div class="col-md-6">
-			<form id="loginForm" method="post">
-				<input class="form-control" id="password" type="password" placeholder="password"/>
-				<input class="form-control" id="nickname" type="text" placeholder="nickname"/>
+	<div>
+		<div>
+			<form id="searchForm" method="post" class="form-inline">
+				<input class="form-control"	id="searchBar" type="text" placeholder="Search for movies...">
+				<input class="btn btn-default" id="search" type="button" value="Search">
 			</form>
-			<button class="btn btn-default" id="submitButton" type="submit" value="Submit">
-				Submit
-			</button>
+			<button class="btn btn-default" id="submitButton">Login</button>
+			<form id="loginForm" method="" class="form-inline">
+				<input class="form-control" id="nickname" type="text" placeholder="nickname">
+				<input class="form-control" id="password" type="password" placeholder="password">
+			</form>
+			<p id="result"></p>
 		</div>
 		<div class="container">
 			<div class="row">
@@ -52,10 +56,5 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		<section>
-			<p>dit is iets</p>
-		</section>
-	</body>
-	</html>
+			</body>
+			</html>
