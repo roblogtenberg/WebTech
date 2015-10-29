@@ -74,6 +74,7 @@ header {
 
 #result {
   margin: 0;
+  float: right;
 }
 
 .thumb {

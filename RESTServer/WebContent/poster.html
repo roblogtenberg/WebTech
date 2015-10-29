@@ -15,8 +15,9 @@
           alert("Uw inlognaam of wachtwoord is verkeerd");
         },
         success: function (data) {
-          console.log(data['Poster']);
-          $("#result").append('<img src="'+data['Poster']+'" alt="poster"/>');
+          console.log(data.Poster);
+          debugger;
+          $("#result").append('<img src="'+data.Poster+'" alt="poster"/>');
         }
       });
     });

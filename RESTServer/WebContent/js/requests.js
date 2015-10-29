@@ -8,7 +8,7 @@ function getPoster(movieName) {
     },
     success: function (data) {
       console.log(data['Poster']);
-      $("#result").append('<img src="'+data['Poster']+'" alt="poster"/>');
+      $("#moviePoster").attr("src", data['Poster']);
     }
   });
 }
@@ -33,8 +33,23 @@ function loginCheck(loginData, nickname) {
 
 $(document).ready(function(){
   $("#submitButton").click(function(){
-    console.log("logindata" + $("#loginForm").val());
     loginCheck($("#loginForm").serialize(), $("#nickname").val());
+  });
+
+  $.ajax({
+    type:     "get",
+    url:      "api/movies/get",
+    dataType: "json",
+    error: function(xhr, status, error) {
+      alert("Er was een fout tijdens het ophalen van de movies");
+    },
+    success: function (data) {
+      alert("get movie succes");    
+      $.each(data, function(i, item) {
+        getPoster(item.title);
+        console.log(item.title);
+      });
+    }
   });
 });
 
@@ -44,5 +59,26 @@ function createUser(registerData, wachtwoord) {
     contentType: "application/x-www-form-urlencoded",
     url: "api/users"
 
-  })
+  });
+}
+
+function getMovies() {
+ $.ajax({
+  type:     "get",
+  url:      "api/movies/get",
+  data:     "json",
+  error: function(xhr, status, error) {
+    alert("Er was een fout tijdens het ophalen van de movies");
+  },
+  success: function (data) {
+    alert("get movie succes");
+    console.log(data.movie['titel']);
+    $.each(data, function(i, item) {
+      console.log(item.titel);
+      console.log(item['titel']);
+      debugger;
+      getPoster(item['titel']);
+    });
+  }
+}); 
 }
