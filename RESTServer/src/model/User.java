@@ -53,6 +53,11 @@ public class User {
 			return lastname + ", " + prefix;
 		}
 	}
+	
+	@XmlAttribute
+	public String getPrefix() {
+		return prefix;
+	}
 
 	@XmlAttribute
 	public String getNickname() {

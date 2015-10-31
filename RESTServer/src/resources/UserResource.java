@@ -3,6 +3,7 @@ package resources;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -23,9 +24,11 @@ public class UserResource {
 	ServletContext context;
 
 	@POST
-	public Response addUser(@FormParam("surname") String surname, @FormParam("prefix") String prefix,
-			@FormParam("lastname") String lastname, @FormParam("nickname") String nickname,
-			@FormParam("password") String password) {
+	@Consumes({ MediaType.APPLICATION_FORM_URLENCODED })
+	public Response addUser(@FormParam("surname") String surname, @FormParam("prefix") String prefix, @FormParam("lastname") String lastname, @FormParam("nickname") String nickname, @FormParam("password") String password) {
+		
+		System.out.println(surname + prefix + lastname + nickname + password);
+		
 		Model model = (Model) context.getAttribute("model");
 		if (surname == null || surname.isEmpty()) {
 			return Response.status(Response.Status.BAD_REQUEST).build();

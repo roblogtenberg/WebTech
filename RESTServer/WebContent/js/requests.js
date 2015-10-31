@@ -9,6 +9,7 @@ function getPoster(movieName) {
     success: function (data) {
       console.log(data['Poster']);
       $("#moviePoster").attr("src", data['Poster']);
+      // return data['Poster'];
     }
   });
 }
@@ -39,21 +40,21 @@ $(document).ready(function(){
     loginCheck($("#loginForm").serialize(), $("#nickname").val());
   });
 
-  $.ajax({
-    type:     "get",
-    url:      "api/movies/get",
-    dataType: "json",
-    error: function(xhr, status, error) {
-      alert("Er was een fout tijdens het ophalen van de movies");
-    },
-    success: function (data) {
-      alert("get movie succes");    
-      $.each(data, function(i, item) {
-        getPoster(item.title);
-        console.log(item.title);
-      });
-    }
-  });
+  // $.ajax({
+  //   type:     "get",
+  //   url:      "api/movies/get",
+  //   dataType: "json",
+  //   error: function(xhr, status, error) {
+  //     alert("Er was een fout tijdens het ophalen van de movies");
+  //   },
+  //   success: function (data) {
+  //     alert("get movie succes");    
+  //     $.each(data, function(i, item) {
+  //       getPoster(item.title);
+  //       console.log(item.title);
+  //     });
+  //   }
+  // });
 });
 
 function createUser(registerData) {
@@ -72,20 +73,20 @@ function createUser(registerData) {
   });
 }
 
-function getMovies() {
- $.ajax({
-  type:     "get",
-  url:      "api/movies/get",
-  dataType: "json",
-  error: function(xhr, status, error) {
-    alert("Er was een fout tijdens het ophalen van de movies");
-  },
-  success: function (data) {
-    alert("get movie succes");    
-    $.each(data, function(i, item) {
-      getPoster(item.title);
-      console.log(item.title);
-    });
-  }
-});
-}
+// function getMovies() {
+//  $.ajax({
+//   type:     "get",
+//   url:      "api/movies/get",
+//   dataType: "json",
+//   error: function(xhr, status, error) {
+//     alert("Er was een fout tijdens het ophalen van de movies");
+//   },
+//   success: function (data) {
+//     alert("get movie succes");    
+//     $.each(data, function(i, item) {
+//       getPoster(item.title);
+//       console.log(item.title);
+//     });
+//   }
+// });
+// }

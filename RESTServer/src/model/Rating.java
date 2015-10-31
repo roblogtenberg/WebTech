@@ -33,9 +33,8 @@ public class Rating {
 	}
 
 	@XmlAttribute
-	public String getMovie() {
-		System.out.println(movie.toString());
-		return movie.toString();
+	public Movie getMovie() {
+		return movie;
 	}
 
 }

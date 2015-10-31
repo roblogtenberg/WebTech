@@ -15,6 +15,10 @@ header {
   color: #000;
 }
 
+#header {
+  text-align: center;
+}
+
 .navigation {
   height: 1100px;
 }
@@ -35,6 +39,7 @@ header {
   margin-left: 5px;
   margin-right: 5px;
   width: 120px;
+  color: #B9090B;
 }
 
 #leftBarButton:hover {
@@ -62,6 +67,26 @@ header {
   float: left;
 }
 
+#centerWrapper {
+  margin: auto;
+}
+
+#movieContainer {
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+#movie {
+  display: inline-block;
+  height: 490px;
+  width: 300px;
+  margin-right: 10px;
+}
+
+#moviePoster {
+  height: 450px;
+}
+
 #searchForm {
   float: left;
 }
@@ -81,16 +106,6 @@ header {
 
 .thumb {
   margin-bottom: 30px;
-}
-
-.page-header {
-  text-align: left;
-  color: #111;
-}
-
-.thumbnail {
-  width: 200px;
-  height: 300px;
 }
 
 h1 {
