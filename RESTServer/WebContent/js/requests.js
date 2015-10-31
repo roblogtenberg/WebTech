@@ -32,6 +32,9 @@ function loginCheck(loginData, nickname) {
 }
 
 $(document).ready(function(){
+  $("#createAccountButton").click(function(){
+    createUser($("#createUserForm").serialize());
+  });
   $("#submitButton").click(function(){
     loginCheck($("#loginForm").serialize(), $("#nickname").val());
   });
@@ -53,18 +56,18 @@ $(document).ready(function(){
   });
 });
 
-function createUser(registerData, wachtwoord) {
+function createUser(registerData) {
   $.ajax({
     type:   "post",
     contentType: "application/x-www-form-urlencoded",
     url: "api/users",
-    data: loginData,
+    data: registerData,
     dataType: "text",
     error: function(xhr, status, error) {
       alert("Er gaat iets mis");
     },
     success: function (data) {
-      alert("Er gaat iets mis");
+      alert("Niks aan de hand");
     }
   });
 }

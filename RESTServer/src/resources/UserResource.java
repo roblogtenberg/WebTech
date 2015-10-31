@@ -3,6 +3,7 @@ package resources;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -22,7 +23,9 @@ public class UserResource {
 	ServletContext context;
 
 	@POST
-	public Response addUser(@QueryParam("surname") String surname, @QueryParam("prefix") String prefix, @QueryParam("lastname") String lastname, @QueryParam("nickname") String nickname, @QueryParam("password") String password) {
+	public Response addUser(@FormParam("surname") String surname, @FormParam("prefix") String prefix,
+			@FormParam("lastname") String lastname, @FormParam("nickname") String nickname,
+			@FormParam("password") String password) {
 		Model model = (Model) context.getAttribute("model");
 		if (surname == null || surname.isEmpty()) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
@@ -43,6 +46,7 @@ public class UserResource {
 		}
 
 		model.addUser(new User(surname, prefix, lastname, nickname, password));
+		System.out.println("Created user");
 		return Response.status(Response.Status.OK).build();
 	}
 

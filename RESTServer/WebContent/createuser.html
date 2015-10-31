@@ -4,11 +4,13 @@
 	<title>Create User</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/requests.js"></script>
 </head>
 <body>
 	<div align="center"> 
-		<form class="createUserForm">
-			<img src="	images/logo.png">
+		<img src="images/logo.png">
+		<form id="createUserForm" class="createUserForm">
 			<br>
 			Personal information
 			<br>
@@ -18,7 +20,7 @@
 			Prefix:<br>
 			<input class="form-control" type="text" name="prefix" value="">
 			<br>
-			First name:<br>
+			Lastname:<br>
 			<input class="form-control" type="text" name="firstname" value="">
 			<br>
 			Nickname:<br>
@@ -28,7 +30,7 @@
 			<input class="form-control" type="password" name="firstname" value="">
 			<br>
 		</form>
-		<button class="btn btn-default" type="submit" value="Submit">Create account</button>
+		<button class="btn btn-default" type="submit" value="Submit" id="createAccountButton">Create account</button>
 	</div>
 </body>
 </html>
