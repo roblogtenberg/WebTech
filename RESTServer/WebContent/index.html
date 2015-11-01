@@ -1,18 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="movieApp">
 <head>
   <title>Notflix</title>
+  <script src="js/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <script src="js/jquery-1.11.3.min.js"></script>
   <script src="js/requests.js"></script>
-
 </head>
 <body>
+  <div id="leftBar">
+    <img src="images/logo.png">
+    <div class="navigation">
+      <form action="createuser.html">
+        <input class="btn btn-default" id="leftBarButton" type="submit" value="Create user">
+      </form>
+      <a class="btn btn-default" id="leftBarButton" href="#userList">Show users</a>
+    </div>
+  </div>
+  <div>
+    <form id="searchForm" method="post" class="form-inline">
+      <input ng-model="query" class="form-control"  id="searchBar" type="text" placeholder="Search for movies..." autofocus>
+    </form>
+    <button class="btn btn-default" id="loginButton">Login</button>
+    <form id="loginForm" action="" class="form-inline">
+      <input class="form-control" type="text" id="nickname" name="nickname" placeholder="Nickname">
+      <input class="form-control" type="password" id="password" name="password" placeholder="Password">
+    </form>
+    <p id="result"></p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div id="header" class="col-lg-12">
+        <h1 class="page-header">Movies</h1>
+      </div>
+      <div id="movieContainer" class="col-md-12 thumb" ng-controller="moviesController">
+        <div id="centerWrapper">
+        <div id="movie" ng-repeat="movie in movies | filter: query">
+            <a href="#{{movie.title}}"><img id="moviePoster" class="img-responsive" src="{{movie.poster}}" alt="Poster"/>
+            <form class="rating">
+              <input type="radio" id="star5-{{movie.title}}" name="rating" value="5" ng-model="movie.userRating" ng-change="putRating(5, movie.imdbcode)"/>
+              <label class = "full" for="star5-{{movie.title}}" title="Awesome - 5 stars"></label>
+              <input type="radio" id="star4half-{{movie.title}}" name="rating" value="4.5" ng-model="movie.userRating" ng-change="putRating(4.5, movie.imdbcode)"/>
+              <label class="half" for="star4half-{{movie.title}}" title="Pretty good - 4.5 stars"></label>
+              <input type="radio" id="star4-{{movie.title}}" name="rating" value="4" ng-model="movie.userRating" ng-change="putRating(4, movie.imdbcode)"/>
+              <label class = "full" for="star4-{{movie.title}}" title="Pretty good - 4 stars"></label>
+              <input type="radio" id="star3half-{{movie.title}}" name="rating" value="3.5" ng-model="movie.userRating" ng-change="putRating(3.5, movie.imdbcode)"/>
+              <label class="half" for="star3half-{{movie.title}}" title="Meh - 3.5 stars"></label>
+              <input type="radio" id="star3-{{movie.title}}" name="rating" value="3" ng-model="movie.userRating" ng-change="putRating(3, movie.imdbcode)"/>
+              <label class = "full" for="star3-{{movie.title}}" title="Meh - 3 stars"></label>
+              <input type="radio" id="star2half-{{movie.title}}" name="rating" value="2.5" ng-model="movie.userRating" ng-change="putRating(2.5, movie.imdbcode)"/>
+              <label class="half" for="star2half-{{movie.title}}" title="Kinda bad - 2.5 stars"></label>
+              <input type="radio" id="star2-{{movie.title}}" name="rating" value="2" ng-model="movie.userRating" ng-change="putRating(2, movie.imdbcode)"/>
+              <label class = "full" for="star2-{{movie.title}}" title="Kinda bad - 2 stars"></label>
+              <input type="radio" id="star1half-{{movie.title}}" name="rating" value="1.5" ng-model="movie.userRating" ng-change="putRating(1.5, movie.imdbcode)"/>
+              <label class="half" for="star1half-{{movie.title}}" title="Meh - 1.5 stars"></label>
+              <input type="radio" id="star1-{{movie.title}}" name="rating" value="1" ng-model="movie.userRating" ng-change="putRating(1, movie.imdbcode)"/>
+              <label class = "full" for="star1-{{movie.title}}" title="Sucks big time - 1 star"></label>
+              <input type="radio" id="starhalf-{{movie.title}}" name="rating" value="0.5" ng-model="movie.userRating" ng-change="putRating(0.5, movie.imdbcode)"/>
+              <label class="half" for="starhalf-{{movie.title}}" title="Sucks big time - 0.5 stars"></label>
+            </form>
+            </a>
+            <i ng-click="removeRating(movie.imdbcode)" class="btn btn-danger glyphicon glyphicon-trash"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-controller="moviesController">
+    <div id="{{movie.title}}" class="overlay" ng-repeat="movie in movies">
+      <div class="popup">
+        <h2>{{movie.title}}</h2>
+        <a class="close" href="#">X</a>
+        <div class="content">
+          {{movie.description}} <br>
+          Rating: {{movie.rating}}
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <form id="loginForm" action="">
-    <input type="text" id="nickname" name="nickname" placeholder="Nickname"><br>
-    <input type="password" id="password" name="password" placeholder="Password"><br>
-  </form>
-  <button id="submitButton">Submit</button>
-  <p id="result"></p>
+  <div ng-controller="userListController">
+    <div id="userList" class="overlay">
+      <div class="popup">
+        <h2>Users</h2>
+        <a class="close" href="#">X</a>
+        <div class="content">
+          <p ng-repeat="user in users">
+            Firstname: {{user.surname}}<br>
+            Lastname: {{user.lastname}}<br>
+            Nickname: {{user.nickname}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

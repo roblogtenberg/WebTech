@@ -9,20 +9,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @XmlRootElement
 public class Rating {
 
-	private int rating;
+	private double rating;
 	private Movie movie;
 
 	public Rating() {
 
 	}
 
-	public Rating(int rating, Movie movie) {
+	public Rating(double rating, Movie movie) {
 		this.rating = rating;
 		this.movie = movie;
 	}
 
 	@XmlAttribute
-	public int getRating() {
+	public double getRating() {
 		return rating;
 	}
 

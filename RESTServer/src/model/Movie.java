@@ -20,9 +20,9 @@ public class Movie {
 	public Movie() {
 	}
 
-	public Movie(int id, String IMBDCode, String title, String date, int length, String director, String description) {
+	public Movie(int id, String IMDBCode, String title, String date, int length, String director, String description) {
 		this.id = id;
-		this.IMDBCode = IMBDCode;
+		this.IMDBCode = IMDBCode;
 		this.title = title;
 		this.date = date;
 		this.length = length;
@@ -37,7 +37,7 @@ public class Movie {
 	}
 
 	@XmlAttribute
-	public String getIMBDCode() {
+	public String getIMDBCode() {
 		return IMDBCode;
 	}
 

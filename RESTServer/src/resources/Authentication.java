@@ -25,7 +25,6 @@ public class Authentication {
 	@Produces({MediaType.TEXT_PLAIN})
 	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
 	public Response authentication(@FormParam("nickname") String nickname, @FormParam("password") String password) {
-		System.out.println("Nickname: " + nickname + " password: " + password);
 		try {
 			// Authenticate the user using the credentials provided
 			authenticate(nickname, password);

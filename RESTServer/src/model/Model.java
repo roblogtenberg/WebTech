@@ -32,8 +32,6 @@ public class Model {
 
 	public void addUser(User user) {
 		users.add(user);
-		System.out.println(user.getName());
-		System.out.println("User added");
 	}
 
 	public List<User> getUsers() {
@@ -45,12 +43,17 @@ public class Model {
 	}
 
 	public List<Rating> getRatings() {
-		return ratings;
+		List<Rating> allRatings = new ArrayList<>();
+		for(User user : users) {
+			allRatings.addAll(user.getRatings());
+		}
+		allRatings.addAll(ratings);
+		return allRatings;
 	}
 
 	public Movie getMovieById(String imdb_id) {
 		for (Movie movie : movies) {
-			if (movie.getIMBDCode().equals(imdb_id)) {
+			if (movie.getIMDBCode().equals(imdb_id)) {
 				return movie;
 			}
 		}
