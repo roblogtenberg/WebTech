@@ -1,18 +1,3 @@
-function getPoster(movieName) {
-  $.ajax({
-    type:     "post",
-    url:      "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&r=json",
-    dataType: "json",
-    error: function(xhr, status, error) {
-      alert("Uw inlognaam of wachtwoord is verkeerd");
-    },
-    success: function (data) {
-      console.log(data['Poster']);
-      $("#moviePoster").attr("src", data['Poster']);
-    }
-  });
-}
-
 function loginCheck(loginData, nickname) {
   $.ajax({
     type:     "post",
@@ -21,23 +6,19 @@ function loginCheck(loginData, nickname) {
     data: loginData,
     dataType: "text",
     error: function(xhr, status, error) {
-      alert("Uw inlognaam of wachtwoord is verkeerd");
+      alert("Your nickname or password is wrong!");
     },
     success: function (data) {
-
       var element = angular.element($('#movieContainer'));
       var controller = element.controller();
       var scope = element.scope();
-
-      console.log("controller" + controller);
-      console.log("scope" + scope);
 
       scope.$apply(function() {
         scope.login(data);
       })
 
       $("#loginForm").css("display", "none");
-      $("#submitButton").css("display", "none");
+      $("#loginButton").css("display", "none");
       $("#result").append("Welkom," + nickname);
     }
   });
@@ -45,9 +26,14 @@ function loginCheck(loginData, nickname) {
 
 $(document).ready(function(){
   $("#createAccountButton").click(function(){
-    createUser($("#createUserForm").serialize());
-  });
-  $("#submitButton").click(function(){
+    if($("#password").val() == $("#passwordControl").val()) {
+     createUser($("#createUserForm").serialize());
+   } else {
+    alert("The passwords don't match");
+   }
+ });
+
+  $("#loginButton").click(function(){
     loginCheck($("#loginForm").serialize(), $("#nickname").val());
   });
 });
@@ -60,7 +46,7 @@ function createUser(registerData) {
     data: registerData,
     dataType: "text",
     error: function(xhr, status, error) {
-      alert("Er gaat iets mis");
+      alert("There wen't something wrong while creating a user!");
     },
     success: function (data) {
       alert("Account created");

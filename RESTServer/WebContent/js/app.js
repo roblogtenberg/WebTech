@@ -6,7 +6,7 @@ angular.module('movieApp', [])
     $http.get("api/movies/get").success(function(data) {
       $scope.movies = data;
 
-      angular.forEach($scope.movies, function(movie, key) {
+      angular.forEach($scope.movies, function(movie) {
         $http.get("http://www.omdbapi.com/?t=" + movie.title + "&y=&plot=short&r=json").success(function(data) {
          movie.poster = data.Poster;
        });
@@ -14,7 +14,7 @@ angular.module('movieApp', [])
         movie.rating = "There is no rating for this movie";
         movie.userRating = 0;
 
-        angular.forEach($scope.ratings, function(value, key) {
+        angular.forEach($scope.ratings, function(value) {
           if(value.movie.title == movie.title) {
             movie.rating = value.rating;
           }
@@ -25,11 +25,11 @@ angular.module('movieApp', [])
 
   $scope.login = function(token) {
     $scope.token = token;
-    $log.log("Token: " + token);
 
     $http.get("api/ratings?token=" + token).success(function(data) {
-      angular.forEach($scope.movies, function(movie, key) {
-        angular.forEach(data, function(value, key) {
+      $scope.userRatings = data;
+      angular.forEach($scope.movies, function(movie) {
+        angular.forEach(data, function(value) {
           if(movie.title == value.movie.title) {
             movie.userRating = value.rating;
             $log.log(movie.title + " value set to " + value.rating);
@@ -43,8 +43,33 @@ angular.module('movieApp', [])
     if(angular.isUndefined($scope.token)) {
       $window.alert('You have to be logged on to rate a movie');
     } else {
-      $http.post("api/ratings?rating=" + rating + "&imdbId=" + imdbId + "&token=" + $scope.token).success(function(data) {
-        $log.log(data);
+      var mustPost = true;
+      angular.forEach($scope.userRatings, function(value) {
+        if(value.movie.imdbcode == imdbId) {
+          $http.put("api/ratings?rating=" + rating + "&imdbId=" + imdbId + "&token=" + $scope.token);
+          mustPost = false;
+        }
+      });
+      if(mustPost) {
+        $http.post("api/ratings?rating=" + rating + "&imdbId=" + imdbId + "&token=" + $scope.token);
+        $scope.userRatings.push({rating: rating, movie: {imdbcode: imdbId}});
+      }
+    }
+  };
+
+  $scope.removeRating = function(imdbId) {
+    if(angular.isUndefined($scope.token)) {
+      $window.alert('You have to be logged on to remove your rating');
+    } else {
+      $http.delete("api/ratings?imdbId=" + imdbId + "&token=" + $scope.token).success(function(data) {
+        $window.alert('Rating removed');
+
+        angular.forEach($scope.movies, function(movie) {
+          if(movie.imdbcode == imdbId) {
+            movie.userRating = 0;
+          }
+        });
+
       });
     }
   };

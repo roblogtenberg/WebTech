@@ -90,8 +90,15 @@ header {
   float: left;
 }
 
-#submitButton {
+#loginButton {
   float: right;
+  color: #B9090B;
+}
+
+#loginButton:hover {
+  background: #B9090B;
+  color: #fff;
+  border-color: #B9090B;
 }
 
 #loginForm {
@@ -164,7 +171,7 @@ h1 {
   border-radius: 5px;
   width: 30%;
   position: relative;
-  height: 300px;
+  /*height: 300px;*/
 }
 
 .popup h2 {

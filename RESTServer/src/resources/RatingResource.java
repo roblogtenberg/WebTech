@@ -62,7 +62,7 @@ public class RatingResource {
 			return Response.status(Response.Status.UNAUTHORIZED).build();
 		}
 
-		if (!user.changeRating(imdbId, Integer.valueOf(rating))) {
+		if (!user.changeRating(imdbId, Double.valueOf(rating))) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 

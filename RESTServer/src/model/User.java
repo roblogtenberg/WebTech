@@ -98,7 +98,7 @@ public class User {
 		this.token = token;
 	}
 
-	public boolean changeRating(String imdbId, int rating) {
+	public boolean changeRating(String imdbId, double rating) {
 		for (int i = 0; i < ratings.size(); i++) {
 			if (ratings.get(i).getSingleMovie().getIMDBCode().equals(imdbId)) {
 				ratings.set(i, new Rating(rating, ratings.get(i).getSingleMovie()));

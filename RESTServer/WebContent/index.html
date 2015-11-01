@@ -23,7 +23,7 @@
     <form id="searchForm" method="post" class="form-inline">
       <input ng-model="query" class="form-control"  id="searchBar" type="text" placeholder="Search for movies..." autofocus>
     </form>
-    <button class="btn btn-default" id="submitButton">Submit</button>
+    <button class="btn btn-default" id="loginButton">Login</button>
     <form id="loginForm" action="" class="form-inline">
       <input class="form-control" type="text" id="nickname" name="nickname" placeholder="Nickname">
       <input class="form-control" type="password" id="password" name="password" placeholder="Password">
@@ -37,8 +37,8 @@
       </div>
       <div id="movieContainer" class="col-md-12 thumb" ng-controller="moviesController">
         <div id="centerWrapper">
-          <a id="movie" href="#{{movie.title}}" ng-repeat="movie in movies | filter: query">
-            <img id="moviePoster" class="img-responsive" src="{{movie.poster}}" alt="Poster"/>
+        <div id="movie" ng-repeat="movie in movies | filter: query">
+            <a href="#{{movie.title}}"><img id="moviePoster" class="img-responsive" src="{{movie.poster}}" alt="Poster"/>
             <form class="rating">
               <input type="radio" id="star5-{{movie.title}}" name="rating" value="5" ng-model="movie.userRating" ng-change="putRating(5, movie.imdbcode)"/>
               <label class = "full" for="star5-{{movie.title}}" title="Awesome - 5 stars"></label>
@@ -61,7 +61,9 @@
               <input type="radio" id="starhalf-{{movie.title}}" name="rating" value="0.5" ng-model="movie.userRating" ng-change="putRating(0.5, movie.imdbcode)"/>
               <label class="half" for="starhalf-{{movie.title}}" title="Sucks big time - 0.5 stars"></label>
             </form>
-          </a>
+            </a>
+            <i ng-click="removeRating(movie.imdbcode)" class="btn btn-danger glyphicon glyphicon-trash"></i>
+          </div>
         </div>
       </div>
     </div>
