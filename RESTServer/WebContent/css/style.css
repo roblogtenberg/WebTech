@@ -33,6 +33,12 @@ header {
   display: inline;
 }
 
+#removeRating {
+  background: #B9090B;
+  color: #fff;
+  border-color: #B9090B;
+}
+
 #leftBarButton {
   margin-top: 5px;
   margin-left: 5px;
