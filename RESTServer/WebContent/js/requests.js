@@ -9,7 +9,6 @@ function getPoster(movieName) {
     success: function (data) {
       console.log(data['Poster']);
       $("#moviePoster").attr("src", data['Poster']);
-      // return data['Poster'];
     }
   });
 }
@@ -25,6 +24,18 @@ function loginCheck(loginData, nickname) {
       alert("Uw inlognaam of wachtwoord is verkeerd");
     },
     success: function (data) {
+
+      var element = angular.element($('#movieContainer'));
+      var controller = element.controller();
+      var scope = element.scope();
+
+      console.log("controller" + controller);
+      console.log("scope" + scope);
+
+      scope.$apply(function() {
+        scope.login(data);
+      })
+
       $("#loginForm").css("display", "none");
       $("#submitButton").css("display", "none");
       $("#result").append("Welkom," + nickname);
@@ -39,22 +50,6 @@ $(document).ready(function(){
   $("#submitButton").click(function(){
     loginCheck($("#loginForm").serialize(), $("#nickname").val());
   });
-
-  // $.ajax({
-  //   type:     "get",
-  //   url:      "api/movies/get",
-  //   dataType: "json",
-  //   error: function(xhr, status, error) {
-  //     alert("Er was een fout tijdens het ophalen van de movies");
-  //   },
-  //   success: function (data) {
-  //     alert("get movie succes");    
-  //     $.each(data, function(i, item) {
-  //       getPoster(item.title);
-  //       console.log(item.title);
-  //     });
-  //   }
-  // });
 });
 
 function createUser(registerData) {
@@ -68,25 +63,8 @@ function createUser(registerData) {
       alert("Er gaat iets mis");
     },
     success: function (data) {
-      alert("Niks aan de hand");
+      alert("Account created");
+      window.location.href = "/RESTServer/"
     }
   });
 }
-
-// function getMovies() {
-//  $.ajax({
-//   type:     "get",
-//   url:      "api/movies/get",
-//   dataType: "json",
-//   error: function(xhr, status, error) {
-//     alert("Er was een fout tijdens het ophalen van de movies");
-//   },
-//   success: function (data) {
-//     alert("get movie succes");    
-//     $.each(data, function(i, item) {
-//       getPoster(item.title);
-//       console.log(item.title);
-//     });
-//   }
-// });
-// }

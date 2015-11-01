@@ -100,7 +100,7 @@ public class User {
 
 	public boolean changeRating(String imdbId, int rating) {
 		for (int i = 0; i < ratings.size(); i++) {
-			if (ratings.get(i).getSingleMovie().getIMBDCode().equals(imdbId)) {
+			if (ratings.get(i).getSingleMovie().getIMDBCode().equals(imdbId)) {
 				ratings.set(i, new Rating(rating, ratings.get(i).getSingleMovie()));
 				return true;
 			}
@@ -110,7 +110,7 @@ public class User {
 	
 	public boolean removeRating(String imdbId) {
 		for (int i = 0; i < ratings.size(); i++) {
-			if (ratings.get(i).getSingleMovie().getIMBDCode().equals(imdbId)) {
+			if (ratings.get(i).getSingleMovie().getIMDBCode().equals(imdbId)) {
 				ratings.remove(i);
 				return true;
 			}

@@ -9,7 +9,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -26,9 +25,6 @@ public class UserResource {
 	@POST
 	@Consumes({ MediaType.APPLICATION_FORM_URLENCODED })
 	public Response addUser(@FormParam("surname") String surname, @FormParam("prefix") String prefix, @FormParam("lastname") String lastname, @FormParam("nickname") String nickname, @FormParam("password") String password) {
-		
-		System.out.println(surname + prefix + lastname + nickname + password);
-		
 		Model model = (Model) context.getAttribute("model");
 		if (surname == null || surname.isEmpty()) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
@@ -49,7 +45,6 @@ public class UserResource {
 		}
 
 		model.addUser(new User(surname, prefix, lastname, nickname, password));
-		System.out.println("Created user");
 		return Response.status(Response.Status.OK).build();
 	}
 
